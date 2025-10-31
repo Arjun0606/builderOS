@@ -42,7 +42,7 @@
 
 Includes:
 ✅ All 3 features
-✅ 3 user licenses
+✅ 10 user licenses
 ✅ Multi-project dashboard
 ✅ Cross-project intelligence
 

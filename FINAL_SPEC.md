@@ -37,18 +37,18 @@ BuilderOS prevents costly mistakes in Indian construction projects through 3 AI-
 
 ```
 ₹1,00,000/month per project (RERA ID)
-($1,250/month)
+($1,200/month)
 
 Includes:
 ✅ All 3 features (Cost Guard + RERA + Contract Analyzer)
-✅ 3 user licenses
+✅ 10 user licenses
 ✅ Multi-project dashboard
 ✅ Unlimited data storage
 ✅ Cross-project intelligence
-✅ 24/7 support
+✅ WhatsApp + Email support
 
 Add-on:
-👤 Extra license: ₹15,000/month ($187.50/month)
+👤 Extra license: ₹15,000/month ($180/month)
 
 30-day free trial (no credit card required)
 ```
@@ -57,9 +57,9 @@ Add-on:
 
 | Customer Size | Projects | Users | Monthly Cost | Annual Cost |
 |---------------|----------|-------|--------------|-------------|
-| Small Builder | 1 | 3 | ₹1L | ₹12L |
-| Medium Builder | 3 | 8 | ₹3L | ₹36L |
-| Large Builder | 5 | 20 | ₹5.75L | ₹69L |
+| Small Builder | 1 | 10 | ₹1L | ₹12L |
+| Medium Builder | 3 | 15 | ₹3.75L | ₹45L |
+| Large Builder | 5 | 25 | ₹7.25L | ₹87L |
 
 ### **ROI Calculation:**
 

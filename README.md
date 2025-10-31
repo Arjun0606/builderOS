@@ -24,7 +24,7 @@ BuilderOS is an **AI-powered error detection system** for Indian real estate dev
 - ✅ Reduces data review time by 60% (25 hrs → 9 hrs/month)
 - ✅ Bank reconciliation automated (8 hrs → 30 min)
 
-**Pricing:** ₹1.6L/month per project (30-day free trial) | **ROI:** 7.25x ($11.6L saved vs ₹1.6L cost)
+**Pricing:** ₹1L/month per project (10 licenses included, 30-day free trial) | **ROI:** 17-30x (₹17-30L saved vs ₹1L cost)
 
 ---
 
@@ -101,19 +101,22 @@ Open http://localhost:3000
 ## 💰 Business Model
 
 **Pricing:**
-- Base: ₹1,60,000/month per project (includes 5 users)
-- Extra seats: ₹12,000/month per user
-- Volume discounts: 10-40% off for multiple projects
+- Base: ₹1,00,000/month per project (includes 10 licenses)
+- Extra licenses: ₹15,000/month per user
 - 30-day free trial (no credit card required)
 
-**Example: Builder with 10 projects + 25 extra users**
-- Monthly: ₹16.7L (projects) + ₹3L (seats) = **₹19.7L/month**
-- Annual: ~₹2.4Cr ARR from one customer
+**Example: Small builder with 1 project, 10 users**
+- Monthly: ₹1L (project) + ₹0 (licenses included) = **₹1L/month**
+- Annual: ₹12L/year
+
+**Example: Medium builder with 3 projects, 15 users**
+- Monthly: ₹3L (projects) + ₹75K (5 extra licenses) = **₹3.75L/month**
+- Annual: ₹45L/year
 
 **ROI for customer (₹100Cr project):**
-- Saves ₹11.1L/month in costs + penalties + labor
-- Pays ₹1.6L/month
-- **ROI: 4.4x**
+- Saves ₹17-30L/month in prevented errors + penalties
+- Pays ₹1L/month
+- **ROI: 17-30x**
 
 👉 **[Read full business strategy in BUSINESS.md](./BUSINESS.md)**
 
