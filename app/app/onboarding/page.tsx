@@ -29,10 +29,10 @@ export default async function OnboardingPage() {
       <div className="w-full max-w-2xl">
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-slate-900">
-            Welcome to BuilderOS
+            Welcome to LegalOS ⚖️
           </h1>
           <p className="mt-2 text-slate-600">
-            Let's set up your organization and first project
+            Let's set up your law firm and get you started
           </p>
         </div>
 

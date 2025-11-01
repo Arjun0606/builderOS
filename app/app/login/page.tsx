@@ -2,8 +2,8 @@ import { Metadata } from 'next'
 import { LoginForm } from '@/components/auth/login-form'
 
 export const metadata: Metadata = {
-  title: 'Login | BuilderOS',
-  description: 'Login to your BuilderOS account',
+  title: 'Login | LegalOS',
+  description: 'Login to your LegalOS account',
 }
 
 export default function LoginPage() {
@@ -12,10 +12,10 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <h1 className="text-4xl font-bold tracking-tight text-slate-900">
-            BuilderOS
+            ⚖️ LegalOS
           </h1>
           <p className="mt-2 text-slate-600">
-            Stop losing lakhs. Catch errors before they cost you.
+            The secure ChatGPT for Indian law firms
           </p>
         </div>
 

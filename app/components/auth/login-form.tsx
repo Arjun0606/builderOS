@@ -69,10 +69,10 @@ export function LoginForm() {
     <form onSubmit={handleMagicLink} className="space-y-6">
       <div className="space-y-2">
         <h2 className="text-2xl font-semibold tracking-tight text-slate-900">
-          Sign in to BuilderOS
+          Sign in to LegalOS
         </h2>
         <p className="text-sm text-slate-600">
-          Enter your email to receive a magic link
+          Enter your work email to receive a magic link
         </p>
       </div>
 
