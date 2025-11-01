@@ -47,20 +47,25 @@
 - View opposing party details
 - Track dates (filing, next hearing)
 
-### ✅ **4. AI Legal Assistant** (FULLY FUNCTIONAL)
+### ✅ **4. AI Legal Assistant** (FULLY FUNCTIONAL + MULTI-MODEL)
 **Page:**
 - `/dashboard/ai-assistant` - Chat interface
 
 **Features:**
 - ChatGPT-style chat interface
-- Claude 4.5 Sonnet integration
+- **Multi-Model AI Architecture:**
+  - **Claude 4.5 Sonnet** (< 150 pages) - Primary model for accuracy
+  - **Gemini 2.5 Pro** (> 150 pages) - Secondary for large documents
+  - **Smart Switching** - Automatic model selection based on content size
 - Trained on Indian law (IPC, CPC, CrPC, Companies Act, GST, etc.)
 - Real-time AI responses
 - Copy to clipboard
 - Chat history (localStorage)
 - Example prompts
-- Legal citations
+- Legal citations with proper formatting
 - Document drafting capabilities
+- Token tracking
+- Cost optimization through intelligent routing
 
 ### ✅ **5. Updated Dashboard** (FULLY FUNCTIONAL)
 **Page:**
