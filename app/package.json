@@ -1,7 +1,7 @@
 {
-  "name": "builderos",
+  "name": "legalos",
   "version": "1.0.0",
-  "description": "AI-Powered Error Prevention for Indian Real Estate Developers",
+  "description": "AI-Powered Legal Assistant for Indian Law Firms",
   "private": true,
   "scripts": {
     "dev": "next dev",

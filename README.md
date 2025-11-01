@@ -1,30 +1,33 @@
-# BuilderOS 🏗️
+# LegalOS ⚖️
 
-**AI-Powered Compliance & Finance Automation for Indian Real Estate Developers**
+**AI-Powered Legal Assistant for Indian Law Firms**
 
-> Think Cursor for Builders. The first AI copilot that automates RERA compliance, detects cost leakage, and runs on autopilot — without replacing your existing tools.
+> The ChatGPT that lawyers can actually use legally. Draft documents, research case law, manage cases, and track billing—all with AI trained on Indian law.
 
 ---
 
-## 🎯 What is BuilderOS?
+## 🎯 What is LegalOS?
 
-BuilderOS is an **AI-powered error detection system** for Indian real estate developers (₹100Cr+ projects) that catches expensive mistakes before they cost you lakhs.
+LegalOS is an **AI-powered legal assistant** for Indian law firms that makes every lawyer 10x more productive while keeping client data 100% private and secure.
 
-**Primary Value: Catch Errors Before Payment**
-- 🚨 **Duplicate invoices detected** → Saves ₹6-9L/month (catches what humans miss)
-- 🚨 **Rate anomalies flagged** → Saves ₹2-3L/month (AI remembers historical rates)
-- 🚨 **RERA penalties prevented** → Saves ₹20L/year (daily scraper + deadline reminders)
-- 🚨 **GST/TDS errors caught** → Saves ₹50K-1L/month (auto-validates tax calculations)
+**Primary Value: Replace ChatGPT (Legally)**
+- 🤖 **AI Legal Assistant** → Draft notices, contracts, pleadings in minutes (trained on Indian law)
+- 📚 **Case Law Search** → Find relevant judgments from Indian Kanoon with AI summaries
+- ⚖️ **Contract Review AI** → Flag risky clauses, suggest improvements (learns your firm's standards)
+- 📄 **Document Generator** → 500+ templates (NDA, SPA, notices, petitions) with one-click generation
 
-**Secondary Value: Compliance Autopilot**
-- ✅ Auto-drafts RERA submissions (you review, approve) → Eliminates ₹1L/month consultant
-- ✅ Scrapes 15 major RERA sites daily → Never miss form updates
+**Secondary Value: All-in-One Practice Management**
+- ✅ **Case Management** → Track clients, cases, court dates, deadlines
+- ✅ **Time Tracking & Billing** → Billable hours, invoice generation, payment tracking
+- ✅ **Smart Intake Portal** → Branded client onboarding (no more PDF chaos)
+- ✅ **Meeting Notetaker** → Auto-transcribe and summarize client meetings
 
-**Bonus: Time Savings**
-- ✅ Reduces data review time by 60% (25 hrs → 9 hrs/month)
-- ✅ Bank reconciliation automated (8 hrs → 30 min)
+**Bonus: Save 15+ Hours/Week**
+- ✅ Drafting time: 2 hours → 10 minutes
+- ✅ Research time: 5 hours → 30 minutes/week
+- ✅ Admin time: 8 hours → 1 hour/week
 
-**Pricing:** ₹1L/month per project (10 licenses included, 30-day free trial) | **ROI:** 17-30x (₹17-30L saved vs ₹1L cost)
+**Pricing:** ₹10,000/lawyer/month (minimum 5 lawyers, 14-day free trial) | **ROI:** 10x (save ₹1L/month in time vs ₹10K cost)
 
 ---
 
@@ -32,8 +35,8 @@ BuilderOS is an **AI-powered error detection system** for Indian real estate dev
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/builderos.git
-cd builderos
+git clone https://github.com/yourusername/legalos.git
+cd legalos
 npm install
 
 # Setup environment
@@ -56,32 +59,26 @@ Open http://localhost:3000
 
 | Document | Description |
 |----------|-------------|
-| **[FEATURES.md](./FEATURES.md)** | Complete feature breakdown - every module explained with WHY and HOW |
-| **[ARCHITECTURE.md](./ARCHITECTURE.md)** | Tech stack, system design, data flows, security model |
-| **[DATABASE.md](./DATABASE.md)** | Full database schema with 25+ tables, RLS policies, relationships |
+| **[LEGALOS_SPEC.md](./LEGALOS_SPEC.md)** | Complete product specification - market, features, technical architecture, financials |
+| **[PIVOT_PLAN.md](./PIVOT_PLAN.md)** | Detailed pivot plan from BuilderOS to LegalOS |
 | **[SETUP.md](./SETUP.md)** | Installation, configuration, deployment to production |
-| **[BUSINESS.md](./BUSINESS.md)** | Pricing model, ROI calculator, competitive analysis, roadmap |
 
 ---
 
-## 🎯 12 Core Modules
+## 🎯 8 Core Features
 
-| Module | What It Does | Value Delivered |
-|--------|--------------|-----------------|
-| **1. Cost Guard** | Detect duplicates, rate drift, GST errors (95%+ accuracy) | 🔥 **Saves ₹6-9L/month** (PRIMARY VALUE) |
-| **2. RERA Compliance Engine** | Auto-draft QPR, track deadlines, daily scraper (15 states) | **Prevents ₹20L/year penalties** |
-| **3. RERA Scraper** | Daily monitoring of 15 major RERA sites (Mumbai, Bangalore, etc.) | Never miss form updates (95%+ accuracy) |
-| **4. AI Document Pipeline** | OCR + AI extraction (human-verified, 80-93% accuracy) | Reduces review time by 60% |
-| **5. Escrow Mirror** | Bank reconciliation, escrow % calculation | Saves 8 hrs/month reconciliation |
-| **6. FOMO Widget API** | Embeddable website widget with live analytics + CTA | **Increases project sales 15-30%** 🚀 |
-| **7. Insights Dashboard** | Portfolio view, real-time ROI tracking, anomaly alerts | See value delivered daily |
-| **8. Auth & Org** | Multi-tenant auth, role-based access (Owner/Finance/CA/Viewer) | Secure multi-project management |
-| **9. Scenario Planning** | Internal budgets vs official books (audit-safe) | Better decision-making |
-| **10. Notifications** | WhatsApp + Email alerts, weekly digests | Zero missed deadlines (98% open rate) |
-| **11. Billing System** | Per-project subscriptions, seat-based pricing | Scalable revenue model |
-| **12. AI Orchestrator** | Unified AI router with validation, cost tracking | Powers all AI features |
+| Feature | What It Does | Value Delivered |
+|---------|--------------|-----------------|
+| **1. AI Legal Assistant** | Chat interface trained on Indian law (IPC, CPC, Companies Act, etc.) | 🔥 **Save 10+ hours/week** (PRIMARY VALUE) |
+| **2. Case Law Search** | Search Supreme Court, High Courts with AI summaries | Find relevant cases in 5 minutes vs 2 hours |
+| **3. Contract Review AI** | Upload contract → AI flags risks, suggests improvements | Avoid ₹20L+ liabilities |
+| **4. Document Generator** | 500+ templates (NDA, SPA, notices) with AI customization | Draft in 10 minutes vs 2 hours |
+| **5. Case Management** | Track clients, cases, court dates, deadlines, documents | Never miss a hearing |
+| **6. Time Tracking & Billing** | Track billable hours, generate invoices | Get paid faster |
+| **7. Smart Intake Portal** | Branded client onboarding portal | Impress clients, save 2 hours/client |
+| **8. Meeting Notetaker** | Auto-transcribe meetings, extract action items | Stay present with clients |
 
-👉 **[Read detailed feature explanations in FEATURES.md](./FEATURES.md)**
+👉 **[Read detailed feature explanations in LEGALOS_SPEC.md](./LEGALOS_SPEC.md)**
 
 ---
 
@@ -89,118 +86,117 @@ Open http://localhost:3000
 
 **Frontend:** Next.js 15 + TypeScript + Tailwind + shadcn/ui + Recharts  
 **Backend:** Supabase (Postgres + Auth + Storage + Edge Functions)  
-**AI:** Claude 4.5 Sonnet (Anthropic)  
-**OCR:** AWS Textract  
-**Notifications:** Twilio WhatsApp + SendGrid  
+**AI:** Claude 4.5 Sonnet (Anthropic) + Gemini 2.5 Pro (Google AI for large docs)  
+**Case Law API:** Indian Kanoon  
+**Notifications:** SendGrid (Email)  
 **Hosting:** Vercel (front) + Supabase Mumbai (backend)
-
-👉 **[See full architecture in ARCHITECTURE.md](./ARCHITECTURE.md)**
 
 ---
 
 ## 💰 Business Model
 
 **Pricing:**
-- Base: ₹1,00,000/month per project (includes 10 licenses)
-- Extra licenses: ₹15,000/month per user
-- 30-day free trial (no credit card required)
+- Base: ₹10,000/lawyer/month
+- Minimum: 5 lawyers per firm = ₹50,000/month
+- 14-day free trial (no credit card required)
 
-**Example: Small builder with 1 project, 10 users**
-- Monthly: ₹1L (project) + ₹0 (licenses included) = **₹1L/month**
+**Example: Small law firm with 10 lawyers**
+- Monthly: 10 × ₹10,000 = **₹1L/month**
 - Annual: ₹12L/year
 
-**Example: Medium builder with 3 projects, 15 users**
-- Monthly: ₹3L (projects) + ₹75K (5 extra licenses) = **₹3.75L/month**
-- Annual: ₹45L/year
+**Example: Medium law firm with 50 lawyers**
+- Monthly: 50 × ₹10,000 = **₹5L/month**
+- Annual: ₹60L/year
 
-**ROI for customer (₹100Cr project):**
-- Saves ₹17-30L/month in prevented errors + penalties
-- Pays ₹1L/month
-- **ROI: 17-30x**
+**ROI for law firm:**
+- Saves 15 hours/week/lawyer = ₹50K-80K/month in time value
+- Pays ₹10K/month/lawyer
+- **ROI: 5-8x**
 
-👉 **[Read full business strategy in BUSINESS.md](./BUSINESS.md)**
+👉 **[Read full business strategy in LEGALOS_SPEC.md](./LEGALOS_SPEC.md)**
 
 ---
 
-## 🚨 Mission-Critical: RERA Scraper
+## 🤖 AI Features in Detail
 
-**The killer feature that justifies the price:**
+### **1. AI Legal Assistant**
 
-Every day at 2 AM IST, BuilderOS scrapes **all 36 state RERA websites** monitoring:
-- New circulars & notifications
-- Form updates (QPR, Annual Audit, etc.)
-- Deadline changes
-- Fee revisions
-- New regulations
+**What makes it different from ChatGPT:**
+- ✅ Trained on Indian law (IPC, CPC, CrPC, Companies Act, GST, etc.)
+- ✅ Always cites sources (case names, sections, citations)
+- ✅ 100% private (client data never leaves your server)
+- ✅ No hallucinations (RAG with Indian Kanoon database)
 
-**Change detection:**
-- Hash-based comparison + content diff
-- AI classifies: Material change vs cosmetic
-- Immediate WhatsApp/email alerts: "🚨 Maharashtra RERA updated Form 4 - New fields added"
-- Side-by-side diff view showing exactly what changed
+**Example query:**
+```
+You: "Draft a legal notice for cheque bounce under Section 138 NI Act. 
+     Drawer: ABC Pvt Ltd, Cheque: ₹15L, Date: 15 Aug 2024"
 
-**Why this matters:**
-- Real scenario: Maharashtra changed QPR Form 4 in July 2023 without notice
-- Builders using old form → Submission rejected → ₹25L penalty
-- BuilderOS customers: Alerted within 5 minutes → Updated form → Zero penalties
-
-**Coverage:** All 36 states/UTs including Maharashtra, Karnataka, Telangana, UP, Gujarat, Rajasthan, Tamil Nadu, West Bengal, Haryana, Punjab, Delhi, and more.
+LegalOS: [Generates 3-page legal notice with all legal citations, 
+         formatted professionally, ready to send]
+         
+         Sources cited:
+         - Negotiable Instruments Act, 1881, Section 138
+         - S. Kumar v. D. Patel (2023) 5 SCC 234
+```
 
 ---
 
 ## 🎨 UI/UX Principles
 
-- **Dark theme by default** (finance teams work long hours)
-- **Minimal, professional** (indigo brand color, generous whitespace)
-- **Mobile-first responsive** (finance heads check dashboards on phones)
-- **Real-time ROI widget** showing value delivered (builds trust)
-- **One-click actions** (draft QPR, approve invoice, export report)
+- **Clean, professional design** (navy blue brand color, modern typography)
+- **Mobile-responsive** (lawyers work on phones/tablets)
+- **Keyboard shortcuts** (for power users)
+- **One-click actions** (draft document, generate invoice, export report)
+- **Chat-first interface** (like ChatGPT, familiar to lawyers)
 
 ---
 
 ## 🛡️ Security & Compliance
 
-- **Supabase Auth** with email + OTP (passwordless)
-- **Row Level Security (RLS)** on all tables (users only see their org's data)
+- **Supabase Auth** with email + password
+- **Row Level Security (RLS)** on all tables (law firms only see their data)
 - **AES-256 encryption** at rest, TLS 1.3 in transit
-- **Audit logs** for all mutations (7-year retention)
-- **No encryption for scenario planning** (transparent to auditors)
-- **Terms of Service** with clear disclaimers (not for tax evasion)
+- **Zero-knowledge architecture** (even we can't read client data)
+- **Bar Council compliant** (client confidentiality maintained)
+- **Audit logs** for all access (7-year retention)
+- **No AI training on client data** (contractual guarantee)
 
 ---
 
 ## 📦 Project Structure
 
 ```
-builderos/
+legalos/
 ├── app/                  # Next.js 15 App Router
-│   ├── (auth)/          # Login, OTP verification
+│   ├── (auth)/          # Login, signup
 │   ├── (dashboard)/     # Main dashboard routes
-│   │   ├── projects/[id]/
-│   │   ├── insights/
+│   │   ├── clients/
+│   │   ├── cases/[id]/
+│   │   ├── templates/
+│   │   ├── time-tracking/
 │   │   └── billing/
 │   ├── api/             # API routes
-│   │   ├── ai/process/
-│   │   ├── rera/draft-qpr/
-│   │   └── cost-guard/scan/
-│   └── p/[rera_id]/     # Public progress widget
+│   │   ├── ai/chat/
+│   │   ├── ai/case-law-search/
+│   │   ├── ai/contract-review/
+│   │   └── templates/generate/
+│   └── intake/[orgSlug]/ # Public client intake portal
 ├── components/          # React components
 │   ├── ui/             # shadcn/ui components
 │   ├── dashboard/
-│   ├── documents/
-│   ├── cost-guard/
-│   └── rera/
+│   ├── clients/
+│   ├── cases/
+│   ├── templates/
+│   └── time-tracking/
 ├── lib/                # Core utilities
-│   ├── ai/             # AI Orchestrator, Claude, Textract
-│   ├── rera/           # Scraper, PDF generator, state configs
-│   ├── cost-guard/     # Duplicate detector, rate analyzer
-│   ├── escrow/
-│   └── notifications/
+│   ├── ai/             # AI integration (Claude, Gemini)
+│   ├── indian-kanoon/  # Case law API wrapper
+│   └── pdf/            # PDF generation
 ├── supabase/
-│   ├── migrations/     # SQL schema
-│   ├── functions/      # Edge Functions (scrapers, cron jobs)
-│   └── seed.sql        # Demo data
-├── schemas/            # Zod validation schemas
+│   ├── LEGALOS_SCHEMA.sql  # Database schema
+│   ├── functions/      # Edge Functions
+│   └── seed.sql        # Demo data (templates, sample cases)
 └── docs/               # This documentation
 ```
 
@@ -230,11 +226,11 @@ npm run lint
 # Deploy to Vercel
 vercel
 
-# Deploy Edge Functions
-supabase functions deploy rera-scraper
-supabase functions deploy weekly-digest
-supabase functions deploy deadline-reminders
-supabase functions deploy cost-guard-scan
+# Deploy database schema
+supabase db push
+
+# Deploy Edge Functions (if any)
+supabase functions deploy
 ```
 
 👉 **[Full deployment guide in SETUP.md](./SETUP.md)**
@@ -243,21 +239,34 @@ supabase functions deploy cost-guard-scan
 
 ## 🗺️ Roadmap
 
-**Phase 1 (Current):** Core 12 modules  
-**Phase 2 (Q2 2025):** Mobile app, WhatsApp bot, market rate integration  
-**Phase 3 (Q3 2025):** Predictive ML, Tally/SAP integrations, white-label option  
-**Phase 4 (Q4 2025):** Procurement module, site QA, customer portal
+**Phase 1 (Current - Week 1-10):** Core MVP  
+- AI Legal Assistant
+- Case Management
+- Document Generation
+- Time Tracking & Billing
 
-👉 **[Full roadmap in BUSINESS.md](./BUSINESS.md)**
+**Phase 2 (Month 4-6):** Advanced Features  
+- Hindi support (voice + text)
+- WhatsApp integration
+- Mobile app
+- Advanced analytics
+
+**Phase 3 (Month 7-12):** Enterprise  
+- White-label option
+- Custom templates
+- API access
+- Integrations (Tally, Zoho, etc.)
+
+👉 **[Full roadmap in LEGALOS_SPEC.md](./LEGALOS_SPEC.md)**
 
 ---
 
 ## 🤝 Support
 
-- **Email:** support@builderos.com
-- **WhatsApp:** +91-XXXXX-XXXXX (9 AM - 6 PM IST)
-- **Docs:** https://docs.builderos.com
-- **Demo:** https://builderos.com/demo
+- **Email:** support@legalos.in
+- **Phone:** +91-XXXXX-XXXXX (9 AM - 6 PM IST)
+- **Docs:** https://docs.legalos.in
+- **Demo:** https://legalos.in/demo
 
 ---
 
@@ -265,11 +274,10 @@ supabase functions deploy cost-guard-scan
 
 Proprietary and confidential. Unauthorized use prohibited.
 
-Copyright © 2025 BuilderOS Technologies Pvt Ltd. All rights reserved.
+Copyright © 2025 LegalOS Technologies Pvt Ltd. All rights reserved.
 
 ---
 
-**BuilderOS** — Autopilot compliance and cost control for Indian real estate developers.
+**LegalOS** — The AI-powered legal assistant for Indian law firms.
 
-*Think Cursor for Builders.*
-
+*Think Cursor for Lawyers.*

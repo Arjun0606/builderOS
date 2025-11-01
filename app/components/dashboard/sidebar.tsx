@@ -4,18 +4,19 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { cn } from '@/lib/utils'
 import {
-  Building2,
+  Scale,
   FileText,
   LayoutDashboard,
   AlertCircle,
-  DollarSign,
+  Clock,
   Settings,
   Users,
-  Shield,
-  Wallet,
+  Briefcase,
+  Bot,
   CreditCard,
+  UserCircle,
+  BookOpen,
 } from 'lucide-react'
-import { ProjectSwitcher } from './project-switcher'
 
 const navigation = [
   {
@@ -24,48 +25,47 @@ const navigation = [
     icon: LayoutDashboard,
   },
   {
-    name: 'Projects',
-    href: '/dashboard/projects',
-    icon: Building2,
-  },
-  {
-    name: 'Cash Flow',
-    href: '/dashboard/cash-flow',
-    icon: Wallet,
+    name: 'AI Assistant',
+    href: '/dashboard/ai-assistant',
+    icon: Bot,
     badge: 'AI',
   },
   {
-    name: 'Cost Guard',
-    href: '/dashboard/cost-guard',
-    icon: DollarSign,
-    badge: 'AI',
+    name: 'Clients',
+    href: '/dashboard/clients',
+    icon: UserCircle,
   },
   {
-    name: 'RERA Compliance',
-    href: '/dashboard/rera',
-    icon: Shield,
-    badge: 'AI',
+    name: 'Cases',
+    href: '/dashboard/cases',
+    icon: Briefcase,
   },
   {
-    name: 'Contracts',
-    href: '/dashboard/contracts',
+    name: 'Templates',
+    href: '/dashboard/templates',
     icon: FileText,
     badge: 'AI',
   },
   {
-    name: 'Alerts',
-    href: '/dashboard/alerts',
-    icon: AlertCircle,
+    name: 'Case Law Search',
+    href: '/dashboard/case-law',
+    icon: BookOpen,
+    badge: 'AI',
   },
   {
-    name: 'Team',
-    href: '/dashboard/team',
-    icon: Users,
+    name: 'Time Tracking',
+    href: '/dashboard/time-tracking',
+    icon: Clock,
   },
   {
     name: 'Billing',
     href: '/dashboard/billing',
     icon: CreditCard,
+  },
+  {
+    name: 'Team',
+    href: '/dashboard/team',
+    icon: Users,
   },
   {
     name: 'Settings',
@@ -86,16 +86,11 @@ export function DashboardSidebar({ userProfile }: DashboardSidebarProps) {
       {/* Logo */}
       <div className="flex h-16 items-center border-b border-slate-200 px-6">
         <Link href="/dashboard" className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white">
-            <Building2 className="h-5 w-5" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-900 text-white">
+            <Scale className="h-5 w-5" />
           </div>
-          <span className="text-xl font-bold">BuilderOS</span>
+          <span className="text-xl font-bold">LegalOS</span>
         </Link>
-      </div>
-
-      {/* Project Switcher */}
-      <div className="px-3 py-4 border-b border-slate-200">
-        <ProjectSwitcher />
       </div>
 
       {/* Organization Name */}
