@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import { createClient } from '@/lib/supabase/server'
+import { generateEmbedding } from '@/lib/embeddings'
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -38,6 +40,7 @@ const INDIAN_LAW_SYSTEM_PROMPT = `You are an expert AI legal assistant specializ
 3. **Explain legal concepts** in simple language
 4. **Provide procedural guidance** (how to file, required documents, timelines)
 5. **Cite relevant case law** when applicable
+6. **Reference firm's past cases** when relevant context is provided
 
 **Guidelines:**
 - Always cite sources (Section numbers, Act names, case citations)
@@ -47,10 +50,12 @@ const INDIAN_LAW_SYSTEM_PROMPT = `You are an expert AI legal assistant specializ
 - Warn users when legal advice requires a licensed advocate
 - Mention limitation periods and deadlines when relevant
 - Consider jurisdiction (different states may have variations)
+- When firm's past case data is provided, reference it appropriately
 
 **Format for Citations:**
 - Statutes: "Section X of [Act Name], [Year]"
 - Cases: "[Party 1] v. [Party 2] ([Year]) [Volume] [Reporter] [Page]"
+- Firm Cases: "Based on your case [case reference]..." or "Similar to your previous case where..."
 
 **Important Disclaimers:**
 - You provide legal information, not legal advice
@@ -88,7 +93,7 @@ function selectModel(messages: any[]): { model: 'claude' | 'gemini'; reason: str
 
 export async function POST(request: Request) {
   try {
-    const { messages, organizationId, forceModel } = await request.json()
+    const { messages, organizationId, useKnowledgeBase = true, forceModel } = await request.json()
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json(
@@ -97,10 +102,71 @@ export async function POST(request: Request) {
       )
     }
 
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+
+    // Get organization ID if not provided
+    let orgId = organizationId
+    if (!orgId && user) {
+      const { data: userProfile } = await supabase
+        .from('users')
+        .select('organization_id')
+        .eq('id', user.id)
+        .single()
+      orgId = userProfile?.organization_id
+    }
+
+    // Search knowledge base if enabled and org ID available
+    let knowledgeBaseContext = ''
+    let knowledgeBaseSources: any[] = []
+    
+    if (useKnowledgeBase && orgId) {
+      try {
+        const lastUserMessage = [...messages].reverse().find(m => m.role === 'user')
+        if (lastUserMessage) {
+          // Generate embedding for the query
+          const { embedding } = await generateEmbedding(lastUserMessage.content)
+          
+          // Search knowledge base
+          const { data: searchResults } = await supabase.rpc('search_documents', {
+            query_embedding: JSON.stringify(embedding),
+            match_org_id: orgId,
+            match_threshold: 0.7,
+            match_count: 5,
+          })
+
+          if (searchResults && searchResults.length > 0) {
+            // Build context from search results
+            knowledgeBaseContext = `\n\n**CONTEXT FROM FIRM'S KNOWLEDGE BASE:**\n\n`
+            knowledgeBaseContext += `The following are relevant excerpts from this law firm's past cases and documents:\n\n`
+            
+            searchResults.forEach((result: any, index: number) => {
+              knowledgeBaseContext += `[${index + 1}] (Similarity: ${(result.similarity * 100).toFixed(0)}%)\n`
+              knowledgeBaseContext += result.chunk_text + '\n\n'
+            })
+
+            knowledgeBaseContext += `\nUse this context to provide more relevant and personalized answers. Reference specific cases or documents when applicable.\n`
+            
+            knowledgeBaseSources = searchResults.map((r: any) => ({
+              documentId: r.document_id,
+              similarity: r.similarity,
+              excerpt: r.chunk_text.substring(0, 200) + '...',
+            }))
+          }
+        }
+      } catch (error) {
+        console.error('Error searching knowledge base:', error)
+        // Continue without knowledge base context
+      }
+    }
+
     // Intelligent model selection (or use forced model for testing)
     const modelSelection = forceModel 
       ? { model: forceModel as 'claude' | 'gemini', reason: 'Force override' }
       : selectModel(messages)
+
+    // Combine system prompt with knowledge base context
+    const systemPromptWithContext = INDIAN_LAW_SYSTEM_PROMPT + knowledgeBaseContext
 
     let assistantMessage = ''
     let modelUsed = ''
@@ -116,7 +182,7 @@ export async function POST(request: Request) {
       const response = await anthropic.messages.create({
         model: 'claude-3-5-sonnet-20241022',
         max_tokens: 8192,
-        system: INDIAN_LAW_SYSTEM_PROMPT,
+        system: systemPromptWithContext,
         messages: anthropicMessages,
       })
 
@@ -130,7 +196,7 @@ export async function POST(request: Request) {
       // Use Gemini 2.5 Pro for large documents
       const model = genAI.getGenerativeModel({ 
         model: 'gemini-2.0-flash-exp',
-        systemInstruction: INDIAN_LAW_SYSTEM_PROMPT,
+        systemInstruction: systemPromptWithContext,
       })
 
       // Convert messages to Gemini format
@@ -151,14 +217,35 @@ export async function POST(request: Request) {
       totalTokens = estimateTokens(messages.map(m => m.content).join('') + assistantMessage)
     }
 
-    // TODO: Save conversation to database (ai_conversations table)
-    // For now, we're just returning the response
+    // Save conversation to database if user is authenticated
+    if (user && orgId) {
+      try {
+        await supabase.from('ai_conversations').insert({
+          organization_id: orgId,
+          user_id: user.id,
+          query: messages[messages.length - 1].content,
+          response: assistantMessage,
+          model_used: modelUsed,
+          tokens_used: totalTokens,
+          knowledge_base_used: useKnowledgeBase && knowledgeBaseSources.length > 0,
+          metadata: {
+            knowledgeBaseSources: knowledgeBaseSources,
+            modelSelection: modelSelection.reason,
+          },
+        })
+      } catch (error) {
+        console.error('Error saving conversation:', error)
+        // Don't fail the request if conversation save fails
+      }
+    }
 
     return NextResponse.json({
       response: assistantMessage,
       model: modelUsed,
       tokens: totalTokens,
       modelSelection: modelSelection.reason,
+      knowledgeBaseUsed: useKnowledgeBase && knowledgeBaseSources.length > 0,
+      knowledgeBaseSources: knowledgeBaseSources,
     })
   } catch (error: any) {
     console.error('AI API Error:', error)
@@ -168,4 +255,3 @@ export async function POST(request: Request) {
     )
   }
 }
-
