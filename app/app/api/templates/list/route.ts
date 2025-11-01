@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { LEGAL_TEMPLATES, TEMPLATE_CATEGORIES, getTemplatesByCategory, searchTemplates } from '@/lib/templates';
+import { COMPREHENSIVE_TEMPLATES, TEMPLATE_CATEGORIES, PRACTICE_AREAS, getTemplatesByCategory, getTemplatesByPracticeArea, searchTemplates, getTemplateStats } from '@/lib/templates-full';
 
 /**
  * GET /api/templates/list
@@ -9,13 +9,19 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get('category');
+    const practiceArea = searchParams.get('practiceArea');
     const query = searchParams.get('query');
 
-    let templates = LEGAL_TEMPLATES;
+    let templates = COMPREHENSIVE_TEMPLATES;
 
     // Filter by category
     if (category && category !== 'all') {
       templates = getTemplatesByCategory(category);
+    }
+
+    // Filter by practice area
+    if (practiceArea && practiceArea !== 'all') {
+      templates = getTemplatesByPracticeArea(practiceArea);
     }
 
     // Search
@@ -26,7 +32,9 @@ export async function GET(request: Request) {
     return NextResponse.json({
       templates,
       categories: TEMPLATE_CATEGORIES,
+      practiceAreas: PRACTICE_AREAS,
       total: templates.length,
+      stats: getTemplateStats(),
     });
 
   } catch (error: any) {

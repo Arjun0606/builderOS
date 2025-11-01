@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
-import { LEGAL_TEMPLATES, fillTemplate } from '@/lib/templates';
+import { COMPREHENSIVE_TEMPLATES, fillTemplate } from '@/lib/templates-full';
 import { createClient } from '@/lib/supabase/server';
 
 const anthropic = new Anthropic({
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     }
 
     // Find template
-    const template = LEGAL_TEMPLATES.find(t => t.id === templateId);
+    const template = COMPREHENSIVE_TEMPLATES.find(t => t.id === templateId);
     if (!template) {
       return NextResponse.json({ error: 'Template not found' }, { status: 404 });
     }
