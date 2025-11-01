@@ -16,6 +16,7 @@ import {
   CreditCard,
   UserCircle,
   BookOpen,
+  Brain,
 } from 'lucide-react'
 
 const navigation = [
@@ -39,6 +40,12 @@ const navigation = [
     name: 'Cases',
     href: '/dashboard/cases',
     icon: Briefcase,
+  },
+  {
+    name: 'Knowledge Base',
+    href: '/dashboard/knowledge-base',
+    icon: Brain,
+    badge: 'NEW',
   },
   {
     name: 'Templates',
