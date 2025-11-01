@@ -88,6 +88,11 @@ export function AIChat({ organizationId, userId, userName }: AIChatProps) {
         timestamp: new Date().toISOString(),
       }
 
+      // Add model info as a metadata property (optional)
+      if (data.model) {
+        console.log(`AI Response from: ${data.model} (${data.modelSelection})`)
+      }
+
       setMessages((prev) => [...prev, assistantMessage])
     } catch (error: any) {
       console.error('Error calling AI:', error)

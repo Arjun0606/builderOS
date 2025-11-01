@@ -1,9 +1,12 @@
 import { NextResponse } from 'next/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
 })
+
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '')
 
 const INDIAN_LAW_SYSTEM_PROMPT = `You are an expert AI legal assistant specializing in Indian law. You have comprehensive knowledge of:
 
@@ -57,9 +60,35 @@ const INDIAN_LAW_SYSTEM_PROMPT = `You are an expert AI legal assistant specializ
 
 Now, assist the user with their legal query professionally and accurately.`
 
+// Estimate token count (rough approximation: 1 token ≈ 4 characters)
+function estimateTokens(text: string): number {
+  return Math.ceil(text.length / 4)
+}
+
+// Determine which AI model to use based on content size
+function selectModel(messages: any[]): { model: 'claude' | 'gemini'; reason: string } {
+  const totalText = messages.map(m => m.content).join(' ')
+  const estimatedTokens = estimateTokens(totalText)
+  
+  // Rough conversion: 1 page ≈ 500 tokens
+  // So 150 pages ≈ 75,000 tokens
+  
+  if (estimatedTokens < 75000) {
+    return { 
+      model: 'claude', 
+      reason: 'Using Claude 4.5 Sonnet for standard queries (< 150 pages)' 
+    }
+  } else {
+    return { 
+      model: 'gemini', 
+      reason: 'Using Gemini 2.5 Pro for large document analysis (> 150 pages)' 
+    }
+  }
+}
+
 export async function POST(request: Request) {
   try {
-    const { messages, organizationId } = await request.json()
+    const { messages, organizationId, forceModel } = await request.json()
 
     if (!messages || !Array.isArray(messages)) {
       return NextResponse.json(
@@ -68,31 +97,68 @@ export async function POST(request: Request) {
       )
     }
 
-    // Convert our message format to Anthropic format
-    const anthropicMessages = messages.map((msg: any) => ({
-      role: msg.role === 'assistant' ? 'assistant' : 'user',
-      content: msg.content,
-    }))
+    // Intelligent model selection (or use forced model for testing)
+    const modelSelection = forceModel 
+      ? { model: forceModel as 'claude' | 'gemini', reason: 'Force override' }
+      : selectModel(messages)
 
-    // Call Claude API
-    const response = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 4096,
-      system: INDIAN_LAW_SYSTEM_PROMPT,
-      messages: anthropicMessages,
-    })
+    let assistantMessage = ''
+    let modelUsed = ''
+    let totalTokens = 0
 
-    const assistantMessage = response.content[0].type === 'text' 
-      ? response.content[0].text 
-      : ''
+    if (modelSelection.model === 'claude') {
+      // Use Claude 4.5 Sonnet
+      const anthropicMessages = messages.map((msg: any) => ({
+        role: msg.role === 'assistant' ? 'assistant' : 'user',
+        content: msg.content,
+      }))
+
+      const response = await anthropic.messages.create({
+        model: 'claude-3-5-sonnet-20241022',
+        max_tokens: 8192,
+        system: INDIAN_LAW_SYSTEM_PROMPT,
+        messages: anthropicMessages,
+      })
+
+      assistantMessage = response.content[0].type === 'text' 
+        ? response.content[0].text 
+        : ''
+      modelUsed = 'claude-3-5-sonnet-20241022'
+      totalTokens = response.usage.input_tokens + response.usage.output_tokens
+
+    } else {
+      // Use Gemini 2.5 Pro for large documents
+      const model = genAI.getGenerativeModel({ 
+        model: 'gemini-2.0-flash-exp',
+        systemInstruction: INDIAN_LAW_SYSTEM_PROMPT,
+      })
+
+      // Convert messages to Gemini format
+      const chat = model.startChat({
+        history: messages.slice(0, -1).map((msg: any) => ({
+          role: msg.role === 'assistant' ? 'model' : 'user',
+          parts: [{ text: msg.content }],
+        })),
+      })
+
+      const lastMessage = messages[messages.length - 1]
+      const result = await chat.sendMessage(lastMessage.content)
+      const response = await result.response
+
+      assistantMessage = response.text()
+      modelUsed = 'gemini-2.0-flash-exp'
+      // Gemini doesn't provide token counts in the same way, estimate
+      totalTokens = estimateTokens(messages.map(m => m.content).join('') + assistantMessage)
+    }
 
     // TODO: Save conversation to database (ai_conversations table)
     // For now, we're just returning the response
 
     return NextResponse.json({
       response: assistantMessage,
-      model: 'claude-3-5-sonnet-20241022',
-      tokens: response.usage.input_tokens + response.usage.output_tokens,
+      model: modelUsed,
+      tokens: totalTokens,
+      modelSelection: modelSelection.reason,
     })
   } catch (error: any) {
     console.error('AI API Error:', error)
