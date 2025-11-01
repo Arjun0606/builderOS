@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { useState } from 'react'
 import {
   Scale,
   FileText,
@@ -18,6 +19,7 @@ import {
   BookOpen,
   Brain,
   Calendar,
+  LogOut,
 } from 'lucide-react'
 
 const navigation = [
@@ -93,6 +95,29 @@ interface DashboardSidebarProps {
 
 export function DashboardSidebar({ userProfile }: DashboardSidebarProps) {
   const pathname = usePathname()
+  const router = useRouter()
+  const [isLoggingOut, setIsLoggingOut] = useState(false)
+
+  const handleLogout = async () => {
+    if (isLoggingOut) return
+    
+    setIsLoggingOut(true)
+    try {
+      const response = await fetch('/api/auth/logout', {
+        method: 'POST',
+      })
+      
+      if (response.ok) {
+        router.push('/login')
+      } else {
+        console.error('Logout failed')
+        setIsLoggingOut(false)
+      }
+    } catch (error) {
+      console.error('Logout error:', error)
+      setIsLoggingOut(false)
+    }
+  }
 
   return (
     <aside className="flex w-64 flex-col border-r border-slate-200 bg-white">
@@ -143,15 +168,27 @@ export function DashboardSidebar({ userProfile }: DashboardSidebarProps) {
         })}
       </nav>
 
-      {/* Footer */}
+      {/* User Profile & Logout */}
       <div className="border-t border-slate-200 p-4">
-        <div className="rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 p-4 text-white">
-          <p className="text-sm font-semibold">Upgrade to Pro</p>
-          <p className="mt-1 text-xs opacity-90">
-            Get advanced features and priority support
-          </p>
-          <button className="mt-3 w-full rounded-md bg-white/20 px-3 py-2 text-sm font-medium backdrop-blur-sm hover:bg-white/30">
-            Learn More
+        <div className="flex items-center gap-3 rounded-lg bg-slate-50 p-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-700">
+            <UserCircle className="h-6 w-6" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-slate-900 truncate">
+              {userProfile?.full_name || 'User'}
+            </p>
+            <p className="text-xs text-slate-500 truncate">
+              {userProfile?.email || ''}
+            </p>
+          </div>
+          <button
+            onClick={handleLogout}
+            disabled={isLoggingOut}
+            className="flex-shrink-0 rounded-md p-2 text-slate-600 hover:bg-slate-200 hover:text-slate-900 disabled:opacity-50"
+            title="Logout"
+          >
+            <LogOut className="h-5 w-5" />
           </button>
         </div>
       </div>
