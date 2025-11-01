@@ -860,6 +860,458 @@ Verified at [PLACE] on [DATE].`,
   },
 
   // Add 15 more corporate templates...
+
+  // ==================== PROPERTY DOCUMENTS (CRITICAL) ====================
+  {
+    id: 'property-rent-agreement-11-month',
+    name: '11-Month Rent Agreement',
+    category: 'Property Documents',
+    practiceArea: 'Property Law',
+    description: 'Leave and License Agreement for 11 months (most common in India)',
+    variables: ['LANDLORD_NAME', 'LANDLORD_ADDRESS', 'LANDLORD_PAN', 'TENANT_NAME', 'TENANT_ADDRESS', 'TENANT_PAN', 'PROPERTY_ADDRESS', 'PROPERTY_DESCRIPTION', 'MONTHLY_RENT', 'SECURITY_DEPOSIT', 'START_DATE', 'MAINTENANCE_CHARGES', 'AGREEMENT_DATE', 'WITNESS1_NAME', 'WITNESS2_NAME'],
+    tags: ['rent', 'lease', '11 months', 'leave and license', 'property', 'residential'],
+    content: `LEAVE AND LICENSE AGREEMENT
+
+THIS AGREEMENT made at [CITY] on this [AGREEMENT_DATE]
+
+BETWEEN
+
+[LANDLORD_NAME], [LANDLORD_ADDRESS], PAN: [LANDLORD_PAN] (hereinafter referred to as "LICENSOR/LANDLORD" which expression shall unless repugnant to the context include his/her heirs, executors, administrators and assigns) of the FIRST PART;
+
+AND
+
+[TENANT_NAME], [TENANT_ADDRESS], PAN: [TENANT_PAN] (hereinafter referred to as "LICENSEE/TENANT" which expression shall unless repugnant to the context include his/her heirs, executors, administrators and assigns) of the SECOND PART;
+
+WHEREAS the Licensor is the lawful owner and in possession of the property situated at [PROPERTY_ADDRESS] (hereinafter referred to as "the said premises").
+
+AND WHEREAS the Licensee has requested the Licensor to grant leave and license to use and occupy the said premises and the Licensor has agreed to grant the same on the terms and conditions hereinafter contained.
+
+NOW THIS AGREEMENT WITNESSETH AS FOLLOWS:
+
+1. GRANT OF LICENSE
+   The Licensor hereby grants to the Licensee a non-exclusive, non-transferable license to use and occupy the said premises for residential purposes only for a period of ELEVEN (11) MONTHS commencing from [START_DATE] and ending on [END_DATE].
+
+2. DESCRIPTION OF PROPERTY
+   [PROPERTY_DESCRIPTION]
+
+3. LICENSE FEE (RENT)
+   3.1 The Licensee agrees to pay monthly license fee of Rs. [MONTHLY_RENT]/- (Rupees [MONTHLY_RENT_WORDS] Only) to the Licensor on or before 5th day of each English calendar month in advance.
+   
+   3.2 Maintenance charges of Rs. [MAINTENANCE_CHARGES]/- per month shall be payable separately by the Licensee.
+   
+   3.3 Electricity, water, cooking gas, and other utility charges shall be borne by the Licensee.
+
+4. SECURITY DEPOSIT
+   4.1 The Licensee has paid an interest-free refundable security deposit of Rs. [SECURITY_DEPOSIT]/- (Rupees [SECURITY_DEPOSIT_WORDS] Only) to the Licensor.
+   
+   4.2 The security deposit shall be refunded within 30 days after expiry/termination of this Agreement, subject to deductions for any damages, arrears, or dues.
+
+5. OBLIGATIONS OF THE LICENSEE
+   5.1 To use the premises only for residential purposes
+   5.2 To pay rent and maintenance charges regularly and promptly
+   5.3 To maintain the premises in good condition
+   5.4 Not to make any structural alterations without written consent
+   5.5 Not to sublet or assign the license
+   5.6 Not to use the premises for any illegal or immoral purposes
+   5.7 To obtain prior written permission before keeping pets
+   5.8 To allow the Licensor or his representatives to inspect the premises with prior notice
+
+6. OBLIGATIONS OF THE LICENSOR
+   6.1 To hand over peaceful possession of the premises
+   6.2 To ensure the premises are fit for habitation
+   6.3 To maintain the building structure
+   6.4 Not to disturb the Licensee's peaceful enjoyment
+
+7. TERMINATION
+   7.1 This Agreement shall automatically terminate after 11 months unless renewed in writing
+   7.2 Either party may terminate by giving ONE (1) MONTH written notice
+   7.3 The Licensor may terminate immediately if the Licensee breaches any terms
+
+8. RENEWAL
+   This Agreement may be renewed by mutual written consent on mutually agreed terms.
+
+9. JURISDICTION
+   Courts at [CITY] shall have exclusive jurisdiction for any disputes arising from this Agreement.
+
+10. REGISTRATION
+    This Agreement is subject to registration under the Registration Act, 1908, if required.
+
+IN WITNESS WHEREOF the parties have signed this Agreement in the presence of witnesses:
+
+LICENSOR/LANDLORD                    LICENSEE/TENANT
+[LANDLORD_NAME]                      [TENANT_NAME]
+
+
+WITNESSES:
+
+1. [WITNESS1_NAME]                   2. [WITNESS2_NAME]
+   Signature: __________                Signature: __________`,
+  },
+
+  {
+    id: 'property-will-testament',
+    name: 'Will (Testament)',
+    category: 'Property Documents',
+    practiceArea: 'Property Law',
+    description: 'Last Will and Testament for distribution of assets',
+    variables: ['TESTATOR_NAME', 'TESTATOR_ADDRESS', 'TESTATOR_AGE', 'TESTATOR_PAN', 'EXECUTOR_NAME', 'EXECUTOR_ADDRESS', 'BENEFICIARY1_NAME', 'BENEFICIARY1_RELATION', 'BENEFICIARY1_SHARE', 'BENEFICIARY2_NAME', 'BENEFICIARY2_RELATION', 'BENEFICIARY2_SHARE', 'PROPERTY_DETAILS', 'MOVABLE_ASSETS', 'DATE', 'PLACE', 'WITNESS1_NAME', 'WITNESS2_NAME'],
+    tags: ['will', 'testament', 'estate', 'inheritance', 'succession'],
+    content: `LAST WILL AND TESTAMENT
+
+I, [TESTATOR_NAME], aged [TESTATOR_AGE] years, son/daughter/wife of [PARENT/SPOUSE_NAME], residing at [TESTATOR_ADDRESS], PAN: [TESTATOR_PAN], being of sound mind and memory, do hereby revoke all former Wills and testamentary dispositions made by me and declare this to be my Last Will and Testament.
+
+1. APPOINTMENT OF EXECUTOR
+   I hereby appoint [EXECUTOR_NAME], residing at [EXECUTOR_ADDRESS], as the sole Executor of this my Will. If the said Executor predeceases me or is unable/unwilling to act, I appoint [ALTERNATE_EXECUTOR_NAME] as the Executor.
+
+2. PAYMENT OF DEBTS
+   I direct my Executor to pay all my just debts, funeral expenses, and testamentary expenses out of my estate as soon as practicable after my demise.
+
+3. DISTRIBUTION OF IMMOVABLE PROPERTY
+   [PROPERTY_DETAILS]
+   
+   I give, devise, and bequeath:
+   
+   a) To [BENEFICIARY1_NAME], my [BENEFICIARY1_RELATION]: [BENEFICIARY1_SHARE]
+   
+   b) To [BENEFICIARY2_NAME], my [BENEFICIARY2_RELATION]: [BENEFICIARY2_SHARE]
+
+4. DISTRIBUTION OF MOVABLE PROPERTY
+   All my movable assets including:
+   [MOVABLE_ASSETS]
+   
+   I bequeath as follows: [DISTRIBUTION_DETAILS]
+
+5. BANK ACCOUNTS AND INVESTMENTS
+   All my bank accounts, fixed deposits, mutual funds, shares, and other investments shall be distributed equally among [BENEFICIARIES] or as per attached Schedule A.
+
+6. RESIDUARY CLAUSE
+   All the rest, residue, and remainder of my estate, whether movable or immovable, of whatever nature and wheresoever situated, which I have not specifically disposed of by this Will, I give, devise, and bequeath to [RESIDUARY_BENEFICIARY].
+
+7. GUARDIANSHIP OF MINOR CHILDREN
+   (If applicable) I appoint [GUARDIAN_NAME] as the Guardian of my minor children.
+
+8. POWERS OF EXECUTOR
+   I hereby authorize my Executor to:
+   a) Sell, transfer, or mortgage any of my properties
+   b) Settle any disputes or claims
+   c) Invest the proceeds as deemed fit
+   d) Take all necessary legal actions
+
+9. NO COMPULSION
+   I hereby declare that I have made this Will of my own free will without any force, coercion, or undue influence from any person.
+
+10. SOUND MIND DECLARATION
+    I declare that I am in sound health and mind and fully understand the contents and consequences of this Will.
+
+IN WITNESS WHEREOF I have hereunto set my hand this [DATE] day of [MONTH], [YEAR] at [PLACE].
+
+TESTATOR
+[TESTATOR_NAME]
+Signature: __________
+
+
+WITNESSES:
+
+We hereby certify that the above-named Testator signed this Will in our presence and that we have signed as witnesses in the presence of the Testator and of each other.
+
+1. [WITNESS1_NAME]                   2. [WITNESS2_NAME]
+   Address: [WITNESS1_ADDRESS]          Address: [WITNESS2_ADDRESS]
+   Signature: __________                Signature: __________
+   Date: __________                     Date: __________`,
+  },
+
+  {
+    id: 'property-sale-deed',
+    name: 'Sale Deed',
+    category: 'Property Documents',
+    practiceArea: 'Property Law',
+    description: 'Deed of Sale for immovable property',
+    variables: ['SELLER_NAME', 'SELLER_ADDRESS', 'SELLER_PAN', 'BUYER_NAME', 'BUYER_ADDRESS', 'BUYER_PAN', 'PROPERTY_DESCRIPTION', 'PROPERTY_ADDRESS', 'SURVEY_NUMBER', 'TOTAL_AREA', 'BOUNDARIES', 'SALE_CONSIDERATION', 'ADVANCE_PAID', 'BALANCE_AMOUNT', 'POSSESSION_DATE', 'DEED_DATE', 'PLACE', 'WITNESS1_NAME', 'WITNESS2_NAME'],
+    tags: ['sale deed', 'property', 'conveyance', 'transfer', 'real estate'],
+    content: `DEED OF SALE
+
+THIS DEED OF SALE is executed at [PLACE] on this [DEED_DATE]
+
+BY
+
+[SELLER_NAME], residing at [SELLER_ADDRESS], PAN: [SELLER_PAN] (hereinafter called "the VENDOR/SELLER" which expression shall unless repugnant to the context include his/her heirs, executors, administrators and assigns) of the ONE PART;
+
+IN FAVOUR OF
+
+[BUYER_NAME], residing at [BUYER_ADDRESS], PAN: [BUYER_PAN] (hereinafter called "the PURCHASER/BUYER" which expression shall unless repugnant to the context include his/her heirs, executors, administrators and assigns) of the OTHER PART;
+
+WHEREAS the Vendor is the absolute owner and in lawful possession of the property more particularly described in the Schedule hereunder.
+
+AND WHEREAS the Vendor has agreed to sell and the Purchaser has agreed to purchase the said property for a total sale consideration of Rs. [SALE_CONSIDERATION]/- (Rupees [SALE_CONSIDERATION_WORDS] Only).
+
+NOW THIS DEED WITNESSETH AS FOLLOWS:
+
+1. PROPERTY DESCRIPTION
+   ALL THAT piece and parcel of land/property situated at [PROPERTY_ADDRESS], more particularly described as:
+   
+   Survey Number: [SURVEY_NUMBER]
+   Total Area: [TOTAL_AREA]
+   
+   Boundaries:
+   North: [NORTH_BOUNDARY]
+   South: [SOUTH_BOUNDARY]
+   East: [EAST_BOUNDARY]
+   West: [WEST_BOUNDARY]
+   
+   Full Description: [PROPERTY_DESCRIPTION]
+
+2. SALE CONSIDERATION
+   2.1 The total sale consideration for the said property is Rs. [SALE_CONSIDERATION]/- (Rupees [SALE_CONSIDERATION_WORDS] Only).
+   
+   2.2 Out of which Rs. [ADVANCE_PAID]/- has been paid as advance at the time of Agreement to Sell dated [AGREEMENT_DATE].
+   
+   2.3 The balance amount of Rs. [BALANCE_AMOUNT]/- has been paid today at the time of execution of this Deed by [MODE_OF_PAYMENT].
+   
+   2.4 The Vendor hereby acknowledges receipt of the total sale consideration and grants full discharge and acquittance.
+
+3. VENDOR'S COVENANTS
+   The Vendor hereby declares and confirms that:
+   
+   a) The Vendor is the absolute owner with clear and marketable title
+   b) The property is free from all encumbrances, charges, liens, mortgages
+   c) No litigation is pending regarding the said property
+   d) All property taxes, dues, and charges have been paid till date
+   e) The Vendor has good right to sell the said property
+   f) The Vendor shall defend the Purchaser's title against all claims
+
+4. CONVEYANCE
+   In consideration of the sale consideration received, the Vendor hereby grants, conveys, transfers, and assigns unto the Purchaser ALL the Vendor's right, title, interest, and estate in and to the said property TO HAVE AND TO HOLD the same unto the Purchaser absolutely forever.
+
+5. POSSESSION
+   The Vendor has handed over actual, physical, and vacant possession of the said property to the Purchaser on [POSSESSION_DATE].
+
+6. RISK AND INSURANCE
+   All risks in respect of the said property pass to the Purchaser from the date of this Deed.
+
+7. EXPENSES
+   All stamp duty, registration charges, and other expenses for this Deed shall be borne by the Purchaser.
+
+8. GOVERNING LAW
+   This Deed shall be governed by the laws of India and the Transfer of Property Act, 1882.
+
+IN WITNESS WHEREOF the parties have hereunto set and subscribed their respective hands the day and year first hereinabove written.
+
+SIGNED AND DELIVERED by the within named
+
+VENDOR/SELLER                        PURCHASER/BUYER
+[SELLER_NAME]                        [BUYER_NAME]
+Signature: __________                Signature: __________
+
+
+WITNESSES:
+
+1. [WITNESS1_NAME]                   2. [WITNESS2_NAME]
+   Address: [WITNESS1_ADDRESS]          Address: [WITNESS2_ADDRESS]
+   Signature: __________                Signature: __________`,
+  },
+
+  {
+    id: 'plaint-partition-suit',
+    name: 'Plaint for Partition Suit',
+    category: 'Drafts & Pleadings',
+    practiceArea: 'Civil Law',
+    description: 'Plaint seeking partition and separate possession of joint property',
+    variables: ['COURT_NAME', 'PLAINTIFF_NAME', 'PLAINTIFF_ADDRESS', 'DEFENDANT1_NAME', 'DEFENDANT2_NAME', 'PROPERTY_DESCRIPTION', 'TOTAL_AREA', 'PLAINTIFF_SHARE', 'ACQUISITION_DETAILS', 'SUIT_VALUATION', 'COURT_FEES', 'DATE'],
+    tags: ['partition', 'property', 'joint property', 'suit', 'civil'],
+    content: `IN THE COURT OF [COURT_NAME]
+
+ORIGINAL SUIT NO. _______ OF [YEAR]
+
+[PLAINTIFF_NAME]
+[PLAINTIFF_ADDRESS]
+                                                    ...Plaintiff
+
+VERSUS
+
+1. [DEFENDANT1_NAME]
+2. [DEFENDANT2_NAME]
+                                                    ...Defendants
+
+PLAINT UNDER ORDER IV RULE 1 CPC
+
+1. That the Plaintiff is a resident of [PLAINTIFF_ADDRESS] and is a major competent to contract.
+
+2. That this Hon'ble Court has jurisdiction to try and adjudicate upon this suit as the cause of action arose within the jurisdiction of this Court and the property in dispute is situated within the jurisdiction of this Court.
+
+3. FACTS OF THE CASE
+
+   3.1 That the property bearing [PROPERTY_DESCRIPTION], total area [TOTAL_AREA], was jointly owned by [ORIGINAL_OWNER] who expired on [DATE].
+   
+   3.2 That upon the demise of [ORIGINAL_OWNER], the property devolved upon his legal heirs namely the Plaintiff and Defendants as per law of succession.
+   
+   3.3 That the Plaintiff and Defendants are co-owners/co-parceners of the said property in the following shares:
+        - Plaintiff: [PLAINTIFF_SHARE]
+        - Defendant No. 1: [DEFENDANT1_SHARE]
+        - Defendant No. 2: [DEFENDANT2_SHARE]
+   
+   3.4 [ACQUISITION_DETAILS]
+
+4. CAUSE OF ACTION
+   
+   4.1 That the Plaintiff has been demanding partition and separate possession of his share from the Defendants.
+   
+   4.2 That despite repeated requests, the Defendants have refused to cooperate in effecting partition.
+   
+   4.3 That the cause of action arose on [DATE] when the Defendants categorically refused partition.
+   
+   4.4 That the cause of action is continuing.
+
+5. DENIAL OF PARTITION
+   That the Defendants have wrongfully denied partition and are preventing the Plaintiff from enjoying his share.
+
+6. NO ALTERNATIVE REMEDY
+   That the Plaintiff has no other equally efficacious alternative remedy except to approach this Hon'ble Court.
+
+7. LIMITATION
+   That this suit is within limitation as the cause of action arose on [DATE].
+
+8. VALUATION
+   That for the purpose of Court Fees and jurisdiction, the suit property is valued at Rs. [SUIT_VALUATION]/- as per ready reckoner rates.
+
+9. That the Plaintiff has paid Court Fees of Rs. [COURT_FEES]/- as per the Valuation of the suit.
+
+PRAYER
+
+In view of the facts and circumstances stated above, it is most humbly prayed that this Hon'ble Court may be pleased to:
+
+a) Declare that the Plaintiff is entitled to [PLAINTIFF_SHARE] share in the suit property;
+
+b) Direct partition of the suit property by metes and bounds according to the shares of the parties;
+
+c) Appoint a Commissioner for the purpose of partition;
+
+d) Award separate possession of the Plaintiff's share;
+
+e) Award costs of this suit;
+
+f) Pass such other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.
+
+AND FOR THIS ACT OF KINDNESS, THE PLAINTIFF SHALL DUTY BOUND FOREVER PRAY.
+
+PLACE: [PLACE]
+DATE: [DATE]
+
+                                        PLAINTIFF
+                                        Through Counsel
+
+VERIFICATION
+
+I, [PLAINTIFF_NAME], the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 9 of the above Plaint are true to my knowledge and belief and nothing material has been concealed therefrom.
+
+Verified at [PLACE] on this [DATE] day of [MONTH], [YEAR].
+
+                                        PLAINTIFF`,
+  },
+
+  {
+    id: 'plaint-specific-performance',
+    name: 'Plaint for Specific Performance',
+    category: 'Drafts & Pleadings',
+    practiceArea: 'Civil Law',
+    description: 'Suit for specific performance of contract of sale of immovable property',
+    variables: ['COURT_NAME', 'PLAINTIFF_NAME', 'PLAINTIFF_ADDRESS', 'DEFENDANT_NAME', 'DEFENDANT_ADDRESS', 'PROPERTY_DESCRIPTION', 'AGREEMENT_DATE', 'SALE_PRICE', 'ADVANCE_PAID', 'PERFORMANCE_DATE', 'BREACH_DATE', 'SUIT_VALUATION', 'COURT_FEES', 'DATE'],
+    tags: ['specific performance', 'contract', 'property', 'breach', 'suit'],
+    content: `IN THE COURT OF [COURT_NAME]
+
+ORIGINAL SUIT NO. _______ OF [YEAR]
+
+[PLAINTIFF_NAME]
+[PLAINTIFF_ADDRESS]
+                                                    ...Plaintiff
+
+VERSUS
+
+[DEFENDANT_NAME]
+[DEFENDANT_ADDRESS]
+                                                    ...Defendant
+
+PLAINT FOR SPECIFIC PERFORMANCE UNDER SECTION 16 OF THE SPECIFIC RELIEF ACT, 1963
+
+1. That the Plaintiff is a resident of [PLAINTIFF_ADDRESS] and is a major competent to contract.
+
+2. That the Defendant is a resident of [DEFENDANT_ADDRESS] and is a major competent to contract.
+
+3. That this Hon'ble Court has jurisdiction to try and adjudicate upon this suit as the cause of action wholly or in part arose within the jurisdiction of this Court.
+
+4. FACTS OF THE CASE
+
+   4.1 That the Defendant is the owner and in possession of the property bearing [PROPERTY_DESCRIPTION] (hereinafter referred to as "the suit property").
+   
+   4.2 That on [AGREEMENT_DATE], the Plaintiff and Defendant entered into an Agreement to Sell wherein the Defendant agreed to sell the suit property to the Plaintiff for a total consideration of Rs. [SALE_PRICE]/- (Rupees [SALE_PRICE_WORDS] Only).
+   
+   4.3 That as per the terms of the Agreement, the Plaintiff paid an advance of Rs. [ADVANCE_PAID]/- to the Defendant, and the Defendant acknowledged receipt of the same.
+   
+   4.4 That it was agreed that the sale would be completed and the Sale Deed executed on or before [PERFORMANCE_DATE].
+   
+   4.5 That the Plaintiff has always been ready and willing to perform his part of the contract.
+
+5. BREACH OF CONTRACT
+   
+   5.1 That the Plaintiff repeatedly requested the Defendant to execute the Sale Deed and complete the transaction.
+   
+   5.2 That despite the Plaintiff's readiness and willingness, the Defendant has wrongfully and without any reasonable cause refused to execute the Sale Deed.
+   
+   5.3 That on [BREACH_DATE], the Defendant categorically refused to perform his part of the contract.
+
+6. PLAINTIFF'S READINESS AND WILLINGNESS
+   
+   6.1 That the Plaintiff has always been ready and willing to perform his part of the contract.
+   
+   6.2 That the Plaintiff is still ready and willing to pay the balance consideration and complete the transaction.
+   
+   6.3 That the Plaintiff has arranged for the balance payment and is prepared to pay the same immediately upon execution of the Sale Deed.
+
+7. NO ALTERNATIVE REMEDY
+   That damages would not be an adequate remedy as the Plaintiff desires to have the specific property which has a unique location and value.
+
+8. CAUSE OF ACTION
+   That the cause of action arose on [BREACH_DATE] when the Defendant refused to perform the contract and is continuing till date.
+
+9. LIMITATION
+   That this suit is within limitation as prescribed under the Limitation Act, 1963.
+
+10. VALUATION
+    That for the purpose of Court Fees and jurisdiction, this suit is valued at Rs. [SUIT_VALUATION]/-
+
+11. That the Plaintiff has paid Court Fees of Rs. [COURT_FEES]/- as per the Valuation.
+
+PRAYER
+
+In view of the facts and circumstances stated above, it is most humbly prayed that this Hon'ble Court may be pleased to:
+
+a) Direct and decree that the Defendant do specifically perform the Agreement to Sell dated [AGREEMENT_DATE] by executing a registered Sale Deed in favour of the Plaintiff;
+
+b) Direct the Defendant to hand over vacant and peaceful possession of the suit property to the Plaintiff;
+
+c) In the alternative, if specific performance is not possible, award damages to the Plaintiff;
+
+d) Award interest on the advance amount paid;
+
+e) Award costs of this suit;
+
+f) Pass such other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice and equity.
+
+AND FOR THIS ACT OF KINDNESS, THE PLAINTIFF SHALL DUTY BOUND FOREVER PRAY.
+
+PLACE: [PLACE]
+DATE: [DATE]
+
+                                        PLAINTIFF
+                                        Through Counsel
+
+VERIFICATION
+
+I, [PLAINTIFF_NAME], the Plaintiff above-named, do hereby verify that the contents of paragraphs 1 to 11 of the above Plaint are true to my knowledge and belief and nothing material has been concealed therefrom.
+
+Verified at [PLACE] on this [DATE] day of [MONTH], [YEAR].
+
+                                        PLAINTIFF`,
+  },
 ];
 
 // Helper functions
