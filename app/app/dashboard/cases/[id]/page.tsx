@@ -117,7 +117,8 @@ export default async function CaseDetailsPage({
 
           {/* Documents */}
           <CaseDocuments 
-            caseId={params.id} 
+            caseId={params.id}
+            organizationId={userProfile.organization_id}
             documents={documents || []} 
           />
         </div>

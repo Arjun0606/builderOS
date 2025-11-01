@@ -17,6 +17,7 @@ import {
   UserCircle,
   BookOpen,
   Brain,
+  Calendar,
 } from 'lucide-react'
 
 const navigation = [
@@ -40,6 +41,11 @@ const navigation = [
     name: 'Cases',
     href: '/dashboard/cases',
     icon: Briefcase,
+  },
+  {
+    name: 'Court Dates',
+    href: '/dashboard/court-dates',
+    icon: Calendar,
   },
   {
     name: 'Knowledge Base',

@@ -1,24 +1,52 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { FileText, Upload, Download, MoreVertical } from 'lucide-react'
-import { format } from 'date-fns'
+import { FileText, Upload } from 'lucide-react'
+import { DocumentUpload } from '../documents/document-upload'
+import { DocumentsList } from '../documents/documents-list'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface CaseDocumentsProps {
   caseId: string
+  organizationId: string
   documents: any[]
 }
 
-export function CaseDocuments({ caseId, documents }: CaseDocumentsProps) {
+export function CaseDocuments({ caseId, organizationId, documents }: CaseDocumentsProps) {
+  const [showUpload, setShowUpload] = useState(false)
+  const router = useRouter()
+
+  const handleUploadComplete = () => {
+    setShowUpload(false)
+    router.refresh()
+  }
+
+  const handleDelete = () => {
+    router.refresh()
+  }
+
   return (
     <div className="rounded-lg border border-slate-200 bg-white p-6">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-slate-900">Documents</h2>
-        <Button size="sm">
+        <h2 className="text-lg font-semibold text-slate-900">
+          Documents ({documents?.length || 0})
+        </h2>
+        <Button size="sm" onClick={() => setShowUpload(!showUpload)}>
           <Upload className="mr-2 h-4 w-4" />
-          Upload
+          {showUpload ? 'Cancel' : 'Upload'}
         </Button>
       </div>
+
+      {showUpload && (
+        <div className="mb-6">
+          <DocumentUpload
+            caseId={caseId}
+            organizationId={organizationId}
+            onUploadComplete={handleUploadComplete}
+          />
+        </div>
+      )}
 
       {documents.length === 0 ? (
         <div className="text-center py-8">
@@ -30,26 +58,8 @@ export function CaseDocuments({ caseId, documents }: CaseDocumentsProps) {
       ) : (
         <div className="space-y-2">
           {documents.slice(0, 5).map((doc) => (
-            <div
-              key={doc.id}
-              className="flex items-center justify-between rounded-lg border border-slate-200 p-3 hover:bg-slate-50"
-            >
-              <div className="flex items-center gap-3 flex-1 min-w-0">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-blue-100">
-                  <FileText className="h-4 w-4 text-blue-600" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-900 truncate">
-                    {doc.document_name}
-                  </p>
-                  <p className="text-xs text-slate-500">
-                    {doc.created_at && format(new Date(doc.created_at), 'MMM d, yyyy')}
-                  </p>
-                </div>
-              </div>
-              <Button variant="ghost" size="sm">
-                <Download className="h-4 w-4" />
-              </Button>
+            <div key={doc.id} className="border-b border-slate-100 last:border-0 pb-2 last:pb-0">
+              <DocumentsList documents={[doc]} onDelete={handleDelete} />
             </div>
           ))}
 
@@ -63,4 +73,3 @@ export function CaseDocuments({ caseId, documents }: CaseDocumentsProps) {
     </div>
   )
 }
-

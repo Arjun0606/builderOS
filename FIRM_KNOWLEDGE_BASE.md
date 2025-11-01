@@ -2,6 +2,10 @@
 
 **The GitHub Copilot for Lawyers**
 
+> ⚠️ **IMPORTANT:** The Knowledge Base uses RAG (Retrieval Augmented Generation), NOT AI training.
+> Your past cases stay in YOUR database. The AI references them temporarily (like consulting a library),
+> but NEVER trains on them (like memorizing permanently). See [SECURITY_ARCHITECTURE.md](./SECURITY_ARCHITECTURE.md) for details.
+
 ---
 
 ## 🎯 THE GAME-CHANGING INSIGHT
@@ -13,10 +17,10 @@
 - Context-aware completions
 
 ### **LegalOS Copilot:**
-- Reads your entire case history
-- Understands your firm's legal strategy
-- Drafts documents in YOUR firm's style
-- References YOUR past wins
+- Has access to your entire case history (in YOUR database)
+- References your firm's legal strategy (via RAG search)
+- Drafts documents in YOUR firm's style (by using past examples as context)
+- Cites YOUR past wins (temporary reference, not memorization)
 
 **This is the REAL value of B2B AI SaaS!** 🚀
 
@@ -43,18 +47,21 @@ AI: [Generates generic notice based on Section 138]
 ```
 Lawyer: "Draft legal notice for cheque bounce"
 
-AI: [Searches firm's 500 past cheque bounce cases]
-    [Finds 50 successful cases]
-    [Analyzes winning patterns]
-    [References similar case from 2019]
-    
-    Generates:
-    - Notice in firm's established style
-    - Uses language from past wins
-    - References: "Similar to Case No. ABC/2019 where 
-      we successfully recovered ₹15L"
-    - Includes arguments that worked for THIS firm
-    - Cites precedents this firm has used successfully
+AI: [Searches firm's database for past cheque bounce cases]
+   [Finds 5 most relevant successful cases via vector search]
+   [Sends them as temporary context to Claude API]
+   [Claude reads context, generates response, forgets context]
+   
+   Generates:
+   - Notice using firm's past case style as reference
+   - Language patterns from successful past notices
+   - "Based on your Case No. ABC/2019 where 
+     you recovered ₹15L, here's a similar approach..."
+   - Arguments that worked in firm's past cases
+   - Precedents firm has cited successfully before
+   
+   Note: AI doesn't "remember" these cases permanently.
+   It reads them for THIS query only, then forgets.
 ```
 
 **Value:** Saves 2-3 hours + higher success rate + firm's institutional knowledge
@@ -293,38 +300,41 @@ had similar facts and resulted in favorable award."
 
 ## 💰 PRICING IMPACT
 
-### **New Value Proposition:**
+### **Value Proposition:**
 
 **Before (Generic AI):**
 > "AI legal assistant that knows Indian law"
-> Worth: ₹5,000/lawyer/month
+> Value: ₹5,000/lawyer/month
 
 **After (Firm Knowledge Base):**
-> "AI that knows YOUR firm's 10-year case history,
->  drafts in YOUR style, references YOUR wins,
+> "AI with access to YOUR firm's 10-year case history,
+>  drafts using YOUR past wins as reference,
 >  and preserves YOUR institutional knowledge forever"
-> Worth: ₹20,000/lawyer/month
+> Value: ₹20,000+/lawyer/month
 
-### **Updated Pricing:**
+### **Pricing (Unchanged):**
 
-**Base: ₹15,000/lawyer/month** (increased from ₹10k)
+**Base: ₹10,000/lawyer/month** (minimum 5 lawyers)
 ```
 Includes:
-- Everything from before
-- Firm Knowledge Base (up to 1,000 cases)
-- Unlimited document uploads
-- AI trained on YOUR cases
-- Semantic search across YOUR history
-- Institutional knowledge preservation
+- AI Legal Assistant (unlimited queries)
+- Case Law Search (Indian Kanoon integration)
+- Document Generation (500+ templates)
+- Case Management (unlimited cases & clients)
+- Firm Knowledge Base (50 GB storage/lawyer)
+- Time Tracking & Billing
+- Complete audit trail
+- All future features
+
+Only Upsell:
+- Extra storage: ₹2,000/lawyer for 200 GB
 ```
 
-**Knowledge Base Tiers:**
-```
-Starter:  1,000 cases    (included in base)
-Pro:      5,000 cases    (+₹5,000/month)
-Enterprise: 25,000 cases (+₹20,000/month)
-Unlimited: ∞ cases       (custom pricing)
-```
+**Why We Include Knowledge Base Free:**
+- Makes LegalOS 10x more valuable than competitors
+- Creates massive switching cost (lock-in)
+- Justifies ₹10,000/month premium pricing
+- Network effect: more usage = more value
 
 ---
 

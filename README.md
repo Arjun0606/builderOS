@@ -157,10 +157,13 @@ LegalOS: [Generates 3-page legal notice with all legal citations,
 - **Supabase Auth** with email + password
 - **Row Level Security (RLS)** on all tables (law firms only see their data)
 - **AES-256 encryption** at rest, TLS 1.3 in transit
-- **Zero-knowledge architecture** (even we can't read client data)
+- **India-hosted** (Supabase Mumbai region, Indian jurisdiction)
 - **Bar Council compliant** (client confidentiality maintained)
 - **Audit logs** for all access (7-year retention)
-- **No AI training on client data** (contractual guarantee)
+- **No AI model training** on your data (Enterprise API contract)
+- **RAG only** (AI references your cases temporarily, doesn't memorize)
+
+👉 **[Read detailed security model in SECURITY_ARCHITECTURE.md](./SECURITY_ARCHITECTURE.md)**
 
 ---
 
