@@ -10,6 +10,7 @@ import { setupCommand } from './commands/setup';
 import { quickCommand } from './commands/quick';
 import { doctorCommand } from './commands/doctor';
 import { activateCommand, statusCommand } from './commands/activate';
+import { onboardCommand } from './commands/onboard';
 
 // Load environment variables from root .env
 config({ path: path.join(__dirname, '../../.env') });
@@ -79,6 +80,15 @@ program
   .description('Check your license status')
   .action(() => {
     statusCommand();
+  });
+
+// Command: builderos onboard
+program
+  .command('onboard')
+  .alias('welcome')
+  .description('Interactive onboarding tour')
+  .action(async () => {
+    await onboardCommand();
   });
 
 // Default action
