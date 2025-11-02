@@ -8,6 +8,7 @@ import { commitCommand } from './commands/commit';
 import { statsCommand } from './commands/stats';
 import { setupCommand } from './commands/setup';
 import { quickCommand } from './commands/quick';
+import { doctorCommand } from './commands/doctor';
 
 // Load environment variables from root .env
 config({ path: path.join(__dirname, '../../.env') });
@@ -52,6 +53,15 @@ program
   .description('Set up DevFlow shell integration')
   .action(() => {
     setupCommand();
+  });
+
+// Command: devflow doctor
+program
+  .command('doctor')
+  .alias('check')
+  .description('Check if DevFlow is set up correctly')
+  .action(() => {
+    doctorCommand();
   });
 
 // Default action
