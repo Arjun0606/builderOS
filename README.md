@@ -1,14 +1,14 @@
-# DevFlow
+# BuilderOS
 
 **Terminal AI + Progress Tracking for Developers**
 
 Make your terminal effortless. See your progress beautifully.
 
-## What is DevFlow?
+## What is BuilderOS?
 
-DevFlow is a CLI tool that:
+BuilderOS is a CLI tool that:
 1. **Smart Terminal Autocomplete** - Type naturally, get perfect commands
-2. **AI Git Commits** - `devflow commit` generates professional commit messages  
+2. **AI Git Commits** - `builderos commit` generates professional commit messages  
 3. **Progress Tracking** - Beautiful analytics of your coding journey
 
 ## Tech Stack
@@ -21,8 +21,8 @@ DevFlow is a CLI tool that:
 ## Project Structure
 
 ```
-devflow/
-├── cli/              # Rust CLI tool
+BuilderOS/
+├── cli/              # TypeScript CLI tool
 ├── dashboard/        # Next.js web dashboard  
 ├── docs/            # Documentation
 └── .env             # API keys

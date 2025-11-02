@@ -4,7 +4,7 @@ import os from 'os';
 import path from 'path';
 
 export function setupCommand() {
-  console.log(chalk.blue.bold('\n⚙️  DevFlow Setup\n'));
+  console.log(chalk.blue.bold('\n⚙️  BuilderOS Setup\n'));
 
   const shell = process.env.SHELL || '';
   const homeDir = os.homedir();
@@ -25,10 +25,10 @@ function setupZsh(homeDir: string) {
   const zshrcPath = path.join(homeDir, '.zshrc');
   
   const integration = `
-# DevFlow Integration
-alias flow="devflow"
-alias fq="devflow quick"
-alias fs="devflow stats"
+# BuilderOS Integration
+alias bos="builderos"
+alias bq="builderos quick"
+alias bs="builderos stats"
 `;
 
   if (!fs.existsSync(zshrcPath)) {
@@ -36,24 +36,24 @@ alias fs="devflow stats"
     fs.writeFileSync(zshrcPath, integration);
   } else {
     const content = fs.readFileSync(zshrcPath, 'utf-8');
-    if (content.includes('DevFlow Integration')) {
-      console.log(chalk.green('✅ DevFlow already set up in .zshrc'));
+    if (content.includes('BuilderOS Integration')) {
+      console.log(chalk.green('✅ BuilderOS already set up in .zshrc'));
       return;
     }
     fs.appendFileSync(zshrcPath, integration);
   }
 
-  console.log(chalk.green('✅ DevFlow integrated with zsh!'));
+  console.log(chalk.green('✅ BuilderOS integrated with zsh!'));
   console.log();
   console.log(chalk.white.bold('Quick aliases:'));
-  console.log(chalk.gray('  flow       →  devflow'));
-  console.log(chalk.gray('  fq         →  devflow quick (instant commit)'));
-  console.log(chalk.gray('  fs         →  devflow stats'));
+  console.log(chalk.gray('  bos        →  builderos'));
+  console.log(chalk.gray('  bq         →  builderos quick (instant commit)'));
+  console.log(chalk.gray('  bs         →  builderos stats'));
   console.log();
   console.log(chalk.yellow('⚡ Run this to activate:'));
   console.log(chalk.cyan('  source ~/.zshrc'));
   console.log();
-  console.log(chalk.gray('Then just type') + chalk.cyan(' fq ') + chalk.gray('to commit your changes!'));
+  console.log(chalk.gray('Then just type') + chalk.cyan(' bq ') + chalk.gray('to commit your changes!'));
   console.log();
 }
 
@@ -61,10 +61,10 @@ function setupBash(homeDir: string) {
   const bashrcPath = path.join(homeDir, '.bashrc');
   
   const integration = `
-# DevFlow Integration
-alias flow="devflow"
-alias fq="devflow quick"
-alias fs="devflow stats"
+# BuilderOS Integration
+alias bos="builderos"
+alias bq="builderos quick"
+alias bs="builderos stats"
 `;
 
   if (!fs.existsSync(bashrcPath)) {
@@ -72,24 +72,24 @@ alias fs="devflow stats"
     fs.writeFileSync(bashrcPath, integration);
   } else {
     const content = fs.readFileSync(bashrcPath, 'utf-8');
-    if (content.includes('DevFlow Integration')) {
-      console.log(chalk.green('✅ DevFlow already set up in .bashrc'));
+    if (content.includes('BuilderOS Integration')) {
+      console.log(chalk.green('✅ BuilderOS already set up in .bashrc'));
       return;
     }
     fs.appendFileSync(bashrcPath, integration);
   }
 
-  console.log(chalk.green('✅ DevFlow integrated with bash!'));
+  console.log(chalk.green('✅ BuilderOS integrated with bash!'));
   console.log();
   console.log(chalk.white.bold('Quick aliases:'));
-  console.log(chalk.gray('  flow       →  devflow'));
-  console.log(chalk.gray('  fq         →  devflow quick (instant commit)'));
-  console.log(chalk.gray('  fs         →  devflow stats'));
+  console.log(chalk.gray('  bos        →  builderos'));
+  console.log(chalk.gray('  bq         →  builderos quick (instant commit)'));
+  console.log(chalk.gray('  bs         →  builderos stats'));
   console.log();
   console.log(chalk.yellow('⚡ Run this to activate:'));
   console.log(chalk.cyan('  source ~/.bashrc'));
   console.log();
-  console.log(chalk.gray('Then just type') + chalk.cyan(' fq ') + chalk.gray('to commit your changes!'));
+  console.log(chalk.gray('Then just type') + chalk.cyan(' bq ') + chalk.gray('to commit your changes!'));
   console.log();
 }
 

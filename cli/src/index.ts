@@ -16,7 +16,7 @@ config({ path: path.join(__dirname, '../../.env') });
 const program = new Command();
 
 program
-  .name('devflow')
+  .name('builderos')
   .description('Terminal AI + Progress Tracking for Developers')
   .version('0.1.0');
 
@@ -66,16 +66,16 @@ program
 
 // Default action
 program.action(() => {
-  console.log(chalk.blue.bold('\n✨ DevFlow - Terminal AI for Developers\n'));
+  console.log(chalk.blue.bold('\n✨ BuilderOS - Terminal AI for Developers\n'));
   console.log(chalk.white('Commands:'));
-  console.log(chalk.gray('  devflow commit  →  AI commit (interactive)'));
-  console.log(chalk.gray('  devflow quick   →  Quick commit (auto stage + commit)'));
-  console.log(chalk.gray('  devflow stats   →  See your progress'));
-  console.log(chalk.gray('  devflow setup   →  Install shell integration'));
+  console.log(chalk.gray('  builderos commit  →  AI commit (interactive)'));
+  console.log(chalk.gray('  builderos quick   →  Quick commit (auto stage + commit)'));
+  console.log(chalk.gray('  builderos stats   →  See your progress'));
+  console.log(chalk.gray('  builderos setup   →  Install shell integration'));
   console.log();
   console.log(chalk.yellow('Quick Start:'));
-  console.log(chalk.cyan('  devflow setup') + chalk.gray('   # Install shell integration'));
-  console.log(chalk.cyan('  devflow quick') + chalk.gray('   # Make your first commit'));
+  console.log(chalk.cyan('  builderos setup') + chalk.gray('   # Install shell integration'));
+  console.log(chalk.cyan('  builderos quick') + chalk.gray('   # Make your first commit'));
   console.log();
 });
 

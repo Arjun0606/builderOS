@@ -1,11 +1,11 @@
 {
-  "name": "devflow",
+  "name": "builderos",
   "version": "0.1.0",
   "description": "Terminal AI + Progress Tracking for Developers",
   "main": "dist/index.js",
   "bin": {
-    "devflow": "./dist/index.js",
-    "flow": "./dist/index.js"
+    "builderos": "./dist/index.js",
+    "bos": "./dist/index.js"
   },
   "scripts": {
     "dev": "tsx src/index.ts",

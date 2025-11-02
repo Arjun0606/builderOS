@@ -8,7 +8,7 @@ import path from 'path';
  * Doctor command - checks if everything is set up correctly
  */
 export function doctorCommand() {
-  console.log(chalk.blue.bold('\n🔍 DevFlow Health Check\n'));
+  console.log(chalk.blue.bold('\n🔍 BuilderOS Health Check\n'));
 
   let allGood = true;
 
@@ -67,11 +67,11 @@ export function doctorCommand() {
 
   if (shellConfigPath && fs.existsSync(shellConfigPath)) {
     const content = fs.readFileSync(shellConfigPath, 'utf-8');
-    if (content.includes('DevFlow Integration')) {
+    if (content.includes('BuilderOS Integration')) {
       console.log(chalk.green('  ✓ Shell integration installed'));
     } else {
       console.log(chalk.yellow('  ⚠ Shell integration not installed'));
-      console.log(chalk.gray('    Run: devflow setup'));
+      console.log(chalk.gray('    Run: builderos setup'));
     }
   } else {
     console.log(chalk.gray('  - Shell config not found'));
@@ -79,7 +79,7 @@ export function doctorCommand() {
 
   // Check 5: Database
   console.log(chalk.white('\nChecking Database...'));
-  const dbPath = path.join(homeDir, '.devflow', 'devflow.db');
+  const dbPath = path.join(homeDir, '.builderos', 'builderos.db');
   if (fs.existsSync(dbPath)) {
     const stats = fs.statSync(dbPath);
     const sizeKB = (stats.size / 1024).toFixed(2);
@@ -101,8 +101,8 @@ export function doctorCommand() {
   // Summary
   console.log();
   if (allGood) {
-    console.log(chalk.green.bold('✅ All systems go! DevFlow is ready.\n'));
-    console.log(chalk.gray('Try: ') + chalk.cyan('devflow quick') + chalk.gray(' to make your first commit'));
+    console.log(chalk.green.bold('✅ All systems go! BuilderOS is ready.\n'));
+    console.log(chalk.gray('Try: ') + chalk.cyan('builderos quick') + chalk.gray(' to make your first commit'));
   } else {
     console.log(chalk.yellow.bold('⚠️  Some issues found. Fix them to get started.\n'));
   }
