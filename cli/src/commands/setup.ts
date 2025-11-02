@@ -27,10 +27,8 @@ function setupZsh(homeDir: string) {
   const integration = `
 # DevFlow Integration
 alias flow="devflow"
-function devflow-commit() {
-  devflow commit
-}
-alias fc="devflow-commit"
+alias fq="devflow quick"
+alias fs="devflow stats"
 `;
 
   if (!fs.existsSync(zshrcPath)) {
@@ -47,13 +45,15 @@ alias fc="devflow-commit"
 
   console.log(chalk.green('✅ DevFlow integrated with zsh!'));
   console.log();
-  console.log(chalk.white.bold('Quick commands:'));
-  console.log(chalk.gray('  flow commit  →  AI-powered commit'));
-  console.log(chalk.gray('  fc           →  Quick commit alias'));
-  console.log(chalk.gray('  flow stats   →  See your progress'));
+  console.log(chalk.white.bold('Quick aliases:'));
+  console.log(chalk.gray('  flow       →  devflow'));
+  console.log(chalk.gray('  fq         →  devflow quick (instant commit)'));
+  console.log(chalk.gray('  fs         →  devflow stats'));
   console.log();
   console.log(chalk.yellow('⚡ Run this to activate:'));
   console.log(chalk.cyan('  source ~/.zshrc'));
+  console.log();
+  console.log(chalk.gray('Then just type') + chalk.cyan(' fq ') + chalk.gray('to commit your changes!'));
   console.log();
 }
 
@@ -63,10 +63,8 @@ function setupBash(homeDir: string) {
   const integration = `
 # DevFlow Integration
 alias flow="devflow"
-function devflow-commit() {
-  devflow commit
-}
-alias fc="devflow-commit"
+alias fq="devflow quick"
+alias fs="devflow stats"
 `;
 
   if (!fs.existsSync(bashrcPath)) {
@@ -83,13 +81,15 @@ alias fc="devflow-commit"
 
   console.log(chalk.green('✅ DevFlow integrated with bash!'));
   console.log();
-  console.log(chalk.white.bold('Quick commands:'));
-  console.log(chalk.gray('  flow commit  →  AI-powered commit'));
-  console.log(chalk.gray('  fc           →  Quick commit alias'));
-  console.log(chalk.gray('  flow stats   →  See your progress'));
+  console.log(chalk.white.bold('Quick aliases:'));
+  console.log(chalk.gray('  flow       →  devflow'));
+  console.log(chalk.gray('  fq         →  devflow quick (instant commit)'));
+  console.log(chalk.gray('  fs         →  devflow stats'));
   console.log();
   console.log(chalk.yellow('⚡ Run this to activate:'));
   console.log(chalk.cyan('  source ~/.bashrc'));
+  console.log();
+  console.log(chalk.gray('Then just type') + chalk.cyan(' fq ') + chalk.gray('to commit your changes!'));
   console.log();
 }
 

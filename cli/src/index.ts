@@ -7,6 +7,7 @@ import path from 'path';
 import { commitCommand } from './commands/commit';
 import { statsCommand } from './commands/stats';
 import { setupCommand } from './commands/setup';
+import { quickCommand } from './commands/quick';
 
 // Load environment variables from root .env
 config({ path: path.join(__dirname, '../../.env') });
@@ -22,9 +23,18 @@ program
 program
   .command('commit')
   .alias('c')
-  .description('Generate AI-powered commit message')
+  .description('Generate AI-powered commit message (interactive)')
   .action(async () => {
     await commitCommand();
+  });
+
+// Command: devflow quick
+program
+  .command('quick')
+  .alias('q')
+  .description('Quick commit (stage all + AI commit, no prompts)')
+  .action(async () => {
+    await quickCommand();
   });
 
 // Command: devflow stats
@@ -48,11 +58,14 @@ program
 program.action(() => {
   console.log(chalk.blue.bold('\n✨ DevFlow - Terminal AI for Developers\n'));
   console.log(chalk.white('Commands:'));
-  console.log(chalk.gray('  devflow commit  →  AI-powered commit messages'));
+  console.log(chalk.gray('  devflow commit  →  AI commit (interactive)'));
+  console.log(chalk.gray('  devflow quick   →  Quick commit (auto stage + commit)'));
   console.log(chalk.gray('  devflow stats   →  See your progress'));
   console.log(chalk.gray('  devflow setup   →  Install shell integration'));
   console.log();
-  console.log(chalk.gray('Run ') + chalk.cyan('devflow setup') + chalk.gray(' to get started!'));
+  console.log(chalk.yellow('Quick Start:'));
+  console.log(chalk.cyan('  devflow setup') + chalk.gray('   # Install shell integration'));
+  console.log(chalk.cyan('  devflow quick') + chalk.gray('   # Make your first commit'));
   console.log();
 });
 
