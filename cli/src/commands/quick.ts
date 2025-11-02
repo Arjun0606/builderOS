@@ -2,12 +2,34 @@ import chalk from 'chalk';
 import { getGitDiff, isGitRepo, commitWithMessage, stageAllChanges, getCommitStats } from '../utils/git';
 import { generateCommitMessage } from '../ai/anthropic-client';
 import { logCommit } from '../db/database';
+import { canUseCommit, trackCommit, isProUser, getLicenseInfo } from '../license/manager';
 
 /**
  * Quick commit - stage all, generate message, commit
  * No prompts, just do it (for rapid iteration)
  */
 export async function quickCommand() {
+  // Check license before proceeding
+  const { allowed, reason, usage } = canUseCommit();
+  
+  if (!allowed) {
+    console.log(chalk.red('\n❌ ' + reason));
+    
+    if (usage) {
+      console.log(chalk.gray(`   Used: ${usage.commits}/${usage.limit} commits this month`));
+    }
+    
+    console.log();
+    console.log(chalk.yellow('⭐ Upgrade to Pro for unlimited commits!'));
+    console.log(chalk.gray('   • $9.99/month or $100/year'));
+    console.log(chalk.gray('   • Unlimited AI commits'));
+    console.log(chalk.gray('   • Advanced stats & features'));
+    console.log();
+    console.log(chalk.white('Visit: ') + chalk.cyan('https://builderos.dev/pricing'));
+    console.log();
+    process.exit(1);
+  }
+
   // Check git repo
   if (!isGitRepo()) {
     console.log(chalk.red('❌ Not a git repository'));
@@ -15,6 +37,11 @@ export async function quickCommand() {
   }
 
   console.log(chalk.blue('⚡ Quick commit mode...\n'));
+  
+  // Show license status for free users
+  if (!isProUser() && usage) {
+    console.log(chalk.gray(`Free tier: ${usage.remaining} commits remaining this month\n`));
+  }
 
   // Stage all changes
   try {
@@ -65,6 +92,9 @@ export async function quickCommand() {
     console.log(chalk.green(`✓ Committed ${hash.substring(0, 7)}`));
     console.log(chalk.gray(`  +${stats.insertions} -${stats.deletions} across ${stats.files} files\n`));
 
+    // Track usage
+    trackCommit();
+
     // Log to database
     logCommit({
       message,
@@ -74,6 +104,12 @@ export async function quickCommand() {
       deletions: stats.deletions,
       timestamp: Date.now(),
     });
+
+    // Show upgrade message occasionally for free users
+    if (!isProUser() && usage && usage.remaining <= 3) {
+      console.log(chalk.yellow(`⚠️  Only ${usage.remaining} commits left this month!`));
+      console.log(chalk.gray('   Upgrade to Pro: https://builderos.dev/pricing\n'));
+    }
   } catch (error: any) {
     console.log(chalk.red('❌ Commit failed'));
     process.exit(1);

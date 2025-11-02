@@ -9,6 +9,7 @@ import { statsCommand } from './commands/stats';
 import { setupCommand } from './commands/setup';
 import { quickCommand } from './commands/quick';
 import { doctorCommand } from './commands/doctor';
+import { activateCommand, statusCommand } from './commands/activate';
 
 // Load environment variables from root .env
 config({ path: path.join(__dirname, '../../.env') });
@@ -55,13 +56,29 @@ program
     setupCommand();
   });
 
-// Command: devflow doctor
+// Command: builderos doctor
 program
   .command('doctor')
   .alias('check')
-  .description('Check if DevFlow is set up correctly')
+  .description('Check if BuilderOS is set up correctly')
   .action(() => {
     doctorCommand();
+  });
+
+// Command: builderos activate
+program
+  .command('activate [license-key]')
+  .description('Activate your Pro license')
+  .action(async (licenseKey?: string) => {
+    await activateCommand(licenseKey);
+  });
+
+// Command: builderos status
+program
+  .command('status')
+  .description('Check your license status')
+  .action(() => {
+    statusCommand();
   });
 
 // Default action

@@ -2,9 +2,30 @@ import chalk from 'chalk';
 import { getGitDiff, isGitRepo, commitWithMessage, getGitStatus, stageAllChanges, getCommitStats, getCurrentBranch } from '../utils/git';
 import { generateCommitMessage } from '../ai/anthropic-client';
 import { logCommit } from '../db/database';
+import { canUseCommit, trackCommit, isProUser } from '../license/manager';
 import readline from 'readline';
 
 export async function commitCommand() {
+  // Check license before proceeding
+  const { allowed, reason, usage } = canUseCommit();
+  
+  if (!allowed) {
+    console.log(chalk.red('\n❌ ' + reason));
+    
+    if (usage) {
+      console.log(chalk.gray(`   Used: ${usage.commits}/${usage.limit} commits this month`));
+    }
+    
+    console.log();
+    console.log(chalk.yellow('⭐ Upgrade to Pro for unlimited commits!'));
+    console.log(chalk.gray('   • $9.99/month or $100/year'));
+    console.log(chalk.gray('   • Unlimited AI commits'));
+    console.log();
+    console.log(chalk.white('Visit: ') + chalk.cyan('https://builderos.dev/pricing'));
+    console.log();
+    process.exit(1);
+  }
+
   console.log(chalk.blue('🔍 Analyzing your changes...\n'));
 
   // Check if we're in a git repo
@@ -142,6 +163,9 @@ export async function commitCommand() {
     console.log(chalk.gray(`   +${stats.insertions} -${stats.deletions}`));
     console.log();
 
+    // Track usage
+    trackCommit();
+
     // Log to database
     logCommit({
       message,
@@ -151,6 +175,12 @@ export async function commitCommand() {
       deletions: stats.deletions,
       timestamp: Date.now(),
     });
+
+    // Show upgrade message for free users
+    if (!isProUser() && usage && usage.remaining <= 3) {
+      console.log(chalk.yellow(`⚠️  Only ${usage.remaining} commits left this month!`));
+      console.log(chalk.gray('   Upgrade to Pro: https://builderos.dev/pricing\n'));
+    }
   } catch (error: any) {
     console.log(chalk.red('❌ Commit failed'));
     console.log(chalk.gray(`   ${error.message}`));
