@@ -4,6 +4,7 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import { config } from 'dotenv';
 import path from 'path';
+import { checkForUpdates } from './utils/version';
 import { commitCommand } from './commands/commit';
 import { statsCommand } from './commands/stats';
 import { setupCommand } from './commands/setup';
@@ -17,10 +18,20 @@ config({ path: path.join(__dirname, '../../.env') });
 
 const program = new Command();
 
+// Check for updates (async, non-blocking)
+checkForUpdates().then((result) => {
+  if (result && result.hasUpdate) {
+    console.log(chalk.yellow(`\n⚠️  Update available: ${result.currentVersion} → ${result.latestVersion}`));
+    console.log(chalk.gray('   Run: npm install -g builderos\n'));
+  }
+}).catch(() => {
+  // Silent fail
+});
+
 program
   .name('builderos')
   .description('Terminal AI + Progress Tracking for Developers')
-  .version('0.1.0');
+  .version('1.0.0');
 
 // Command: devflow commit
 program

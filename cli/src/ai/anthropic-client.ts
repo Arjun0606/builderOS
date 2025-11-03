@@ -1,4 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
+import { retryWithBackoff } from '../utils/retry';
 
 const client = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY,
@@ -6,7 +7,8 @@ const client = new Anthropic({
 
 export async function generateCommitMessage(diff: string): Promise<string> {
   try {
-    const message = await client.messages.create({
+    // Retry with exponential backoff for transient errors
+    const message = await retryWithBackoff(() => client.messages.create({
       model: 'claude-sonnet-4-20250514',
       max_tokens: 500,
       temperature: 0.3,
@@ -34,6 +36,10 @@ ${diff}
 Reply with ONLY the commit message, nothing else.`,
         },
       ],
+    }), {
+      maxAttempts: 3,
+      initialDelay: 1000,
+      maxDelay: 5000,
     });
 
     const content = message.content[0];

@@ -44,10 +44,10 @@ bq  # That's it!
 
 ## 💰 Pricing
 
-- **Free**: 10 AI commits/month
-- **Pro**: $9.99/month or $100/year (unlimited commits)
+- **7-Day Trial**: Unlimited commits, all features, no credit card
+- **Pro**: $9.99/month or $100/year after trial
 
-Try it free, upgrade when you love it.
+Try it free for 7 days, upgrade when you love it.
 
 ## 📖 Usage
 
@@ -84,7 +84,7 @@ $ bq
 ✓ Committed abc1234
   +89 -12 across 4 files
 
-Free tier: 9 commits remaining this month
+Trial: 6 days remaining
 ```
 
 ## 🔥 Why BuilderOS?

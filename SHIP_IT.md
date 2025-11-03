@@ -3,11 +3,11 @@
 ## ✅ **WHAT'S COMPLETE**
 
 ### **💰 Monetization System**
-- ✅ Free tier (10 commits/month)
+- ✅ 7-day trial (unlimited commits)
 - ✅ Pro tier ($9.99/mo or $100/yr)
 - ✅ License activation
-- ✅ Usage tracking
-- ✅ Upgrade prompts
+- ✅ Time-based trial tracking
+- ✅ Upgrade prompts (last 2 days)
 
 ### **🌍 Universal Platform Support**
 - ✅ Mac (zsh, bash, fish)

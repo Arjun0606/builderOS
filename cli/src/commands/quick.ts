@@ -3,6 +3,8 @@ import { getGitDiff, isGitRepo, commitWithMessage, stageAllChanges, getCommitSta
 import { generateCommitMessage } from '../ai/anthropic-client';
 import { logCommit } from '../db/database';
 import { canUseCommit, trackCommit, isProUser, getLicenseInfo } from '../license/manager';
+import { checkRateLimit, formatResetTime } from '../utils/rate-limit';
+import { trackEvent } from '../utils/analytics';
 
 /**
  * Quick commit - stage all, generate message, commit
@@ -33,6 +35,24 @@ export async function quickCommand() {
   // Check git repo
   if (!isGitRepo()) {
     console.log(chalk.red('❌ Not a git repository'));
+    process.exit(1);
+  }
+
+  // Check rate limit (prevent abuse)
+  const userPlan = isProUser() ? 'pro' : 'free';
+  const rateLimit = checkRateLimit(userPlan);
+  
+  if (!rateLimit.allowed) {
+    trackEvent({ event: 'rate_limited' });
+    console.log(chalk.red('\n❌ Rate limit exceeded'));
+    console.log(chalk.gray(`   Too many commits in the last hour`));
+    console.log(chalk.gray(`   Limit resets in ${formatResetTime(rateLimit.resetAt)}`));
+    console.log();
+    if (userPlan === 'free') {
+      console.log(chalk.yellow('💡 Pro users have 10x higher limits!'));
+      console.log(chalk.white('   Visit: ') + chalk.cyan('https://builderos.dev/pricing'));
+    }
+    console.log();
     process.exit(1);
   }
 
@@ -77,6 +97,7 @@ export async function quickCommand() {
   try {
     message = await generateCommitMessage(diff);
   } catch (error: any) {
+    trackEvent({ event: 'commit_error' });
     console.log(chalk.red('❌ AI failed'));
     process.exit(1);
   }
@@ -94,6 +115,7 @@ export async function quickCommand() {
 
     // Track usage
     trackCommit();
+    trackEvent({ event: 'commit_success' });
 
     // Log to database
     logCommit({
