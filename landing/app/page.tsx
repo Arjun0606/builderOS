@@ -79,17 +79,17 @@ Free tier: 9 commits remaining this month`}
         <div id="pricing" className="max-w-4xl mx-auto mb-20">
           <h2 className="text-4xl font-bold text-center mb-12">Simple Pricing</h2>
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Free */}
+            {/* Trial */}
             <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-lg p-8">
-              <h3 className="text-2xl font-bold mb-4">Free</h3>
+              <h3 className="text-2xl font-bold mb-4">7-Day Trial</h3>
               <div className="text-4xl font-bold mb-6">$0</div>
               <ul className="space-y-3 mb-8 text-slate-300">
-                <li>✓ 10 AI commits/month</li>
-                <li>✓ Basic stats</li>
-                <li>✓ All platforms</li>
+                <li>✓ Unlimited commits for 7 days</li>
+                <li>✓ All features included</li>
+                <li>✓ No credit card required</li>
               </ul>
               <button className="w-full bg-slate-700 hover:bg-slate-600 py-3 rounded-lg font-semibold transition">
-                Start Free
+                Start Trial
               </button>
             </div>
 

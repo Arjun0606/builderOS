@@ -16,11 +16,11 @@ export async function quickCommand() {
     console.log(chalk.red('\n❌ ' + reason));
     
     if (usage) {
-      console.log(chalk.gray(`   Used: ${usage.commits}/${usage.limit} commits this month`));
+      console.log(chalk.gray(`   Your 7-day trial has ended`));
     }
     
     console.log();
-    console.log(chalk.yellow('⭐ Upgrade to Pro for unlimited commits!'));
+    console.log(chalk.yellow('⭐ Upgrade to Pro to keep using BuilderOS!'));
     console.log(chalk.gray('   • $9.99/month or $100/year'));
     console.log(chalk.gray('   • Unlimited AI commits'));
     console.log(chalk.gray('   • Advanced stats & features'));
@@ -38,9 +38,9 @@ export async function quickCommand() {
 
   console.log(chalk.blue('⚡ Quick commit mode...\n'));
   
-  // Show license status for free users
-  if (!isProUser() && usage) {
-    console.log(chalk.gray(`Free tier: ${usage.remaining} commits remaining this month\n`));
+  // Show trial status for trial users
+  if (!isProUser() && usage && !usage.isExpired) {
+    console.log(chalk.gray(`Trial: ${usage.daysRemaining} day${usage.daysRemaining === 1 ? '' : 's'} remaining\n`));
   }
 
   // Stage all changes
@@ -105,9 +105,9 @@ export async function quickCommand() {
       timestamp: Date.now(),
     });
 
-    // Show upgrade message occasionally for free users
-    if (!isProUser() && usage && usage.remaining <= 3) {
-      console.log(chalk.yellow(`⚠️  Only ${usage.remaining} commits left this month!`));
+    // Show upgrade message for trial users (last 2 days)
+    if (!isProUser() && usage && !usage.isExpired && usage.daysRemaining <= 2) {
+      console.log(chalk.yellow(`⚠️  Only ${usage.daysRemaining} day${usage.daysRemaining === 1 ? '' : 's'} left in your trial!`));
       console.log(chalk.gray('   Upgrade to Pro: https://builderos.dev/pricing\n'));
     }
   } catch (error: any) {

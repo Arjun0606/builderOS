@@ -69,7 +69,7 @@ export function statusCommand() {
 
   if (!license) {
     console.log(chalk.yellow('⚠️  No license found'));
-    console.log(chalk.gray('   You are using the free tier (10 commits/month)'));
+    console.log(chalk.gray('   You have a 7-day free trial'));
     console.log();
     console.log(chalk.cyan('Upgrade to Pro:'));
     console.log(chalk.gray('   • Unlimited AI commits'));
@@ -88,8 +88,14 @@ export function statusCommand() {
   console.log();
 
   if (license.plan === 'free') {
-    console.log(chalk.yellow('💡 Upgrade to unlock unlimited commits!'));
-    console.log(chalk.white('Visit: ') + chalk.cyan('https://builderos.dev/pricing'));
+    const usage = require('../license/manager').getTrialStatus();
+    if (usage.isExpired) {
+      console.log(chalk.red('❌ Your trial has expired!'));
+      console.log(chalk.white('Upgrade: ') + chalk.cyan('https://builderos.dev/pricing'));
+    } else {
+      console.log(chalk.yellow(`💡 ${usage.daysRemaining} day${usage.daysRemaining === 1 ? '' : 's'} left in your trial!`));
+      console.log(chalk.white('Upgrade: ') + chalk.cyan('https://builderos.dev/pricing'));
+    }
   } else {
     console.log(chalk.green('✅ You have Pro access!'));
   }

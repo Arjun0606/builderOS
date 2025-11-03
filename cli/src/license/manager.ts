@@ -46,14 +46,15 @@ export interface License {
 }
 
 export interface UsageStats {
-  month: string;
-  commits: number;
-  limit: number;
-  remaining: number;
+  trialStarted: number;
+  trialEndsAt: number;
+  daysRemaining: number;
+  isExpired: boolean;
 }
 
-// Free tier: 10 commits per month
-const FREE_COMMIT_LIMIT = 10;
+// Free trial: 7 days
+const TRIAL_DAYS = 7;
+const TRIAL_DURATION_MS = TRIAL_DAYS * 24 * 60 * 60 * 1000;
 
 export function getCurrentLicense(): License | null {
   const result = db.prepare('SELECT * FROM license ORDER BY id DESC LIMIT 1').get() as any;
@@ -98,16 +99,17 @@ export function activateLicense(licenseKey: string, email?: string, plan: string
 export function activateFreeTier(): void {
   const deviceId = getDeviceId();
   const now = Date.now();
-  const freeKey = `free_${deviceId}_${now}`;
+  const trialEnd = now + TRIAL_DURATION_MS;
+  const freeKey = `trial_${deviceId}_${now}`;
 
   // Deactivate any existing license
   db.prepare('DELETE FROM license').run();
 
-  // Insert free tier
+  // Insert trial (7 days)
   db.prepare(`
     INSERT INTO license (key, email, plan, status, activated_at, expires_at, device_id, last_validated)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `).run(freeKey, null, 'free', 'active', now, null, deviceId, now);
+  `).run(freeKey, null, 'free', 'active', now, trialEnd, deviceId, now);
 }
 
 export function deactivateLicense(): void {
@@ -121,22 +123,33 @@ export function isProUser(): boolean {
     return false;
   }
 
-  if (license.plan === 'free') {
-    return false;
-  }
-
   // Check if expired
   if (license.expires_at && Date.now() > license.expires_at) {
     return false;
   }
 
-  return license.status === 'active';
+  return license.status === 'active' && license.plan !== 'free';
+}
+
+export function isTrialActive(): boolean {
+  const license = getCurrentLicense();
+  
+  if (!license || license.plan !== 'free') {
+    return false;
+  }
+
+  // Check if trial expired
+  if (license.expires_at && Date.now() > license.expires_at) {
+    return false;
+  }
+
+  return true;
 }
 
 export function canUseCommit(): { allowed: boolean; reason?: string; usage?: UsageStats } {
   const license = getCurrentLicense();
 
-  // No license = start free tier
+  // No license = start trial
   if (!license) {
     activateFreeTier();
     return canUseCommit(); // Retry
@@ -147,13 +160,13 @@ export function canUseCommit(): { allowed: boolean; reason?: string; usage?: Usa
     return { allowed: true };
   }
 
-  // Free users = check limit
-  const usage = getCurrentMonthUsage();
+  // Trial users = check if expired
+  const usage = getTrialStatus();
   
-  if (usage.remaining <= 0) {
+  if (usage.isExpired) {
     return {
       allowed: false,
-      reason: 'Free tier limit reached (10 commits/month)',
+      reason: '7-day trial expired',
       usage,
     };
   }
@@ -173,20 +186,27 @@ export function trackCommit(): void {
   }
 }
 
-export function getCurrentMonthUsage(): UsageStats {
-  const currentMonth = getCurrentMonth();
+export function getTrialStatus(): UsageStats {
+  const license = getCurrentLicense();
   
-  const result = db.prepare('SELECT * FROM usage WHERE month = ?').get(currentMonth) as any;
-  
-  const commits = result ? result.commits : 0;
-  const limit = FREE_COMMIT_LIMIT;
-  const remaining = Math.max(0, limit - commits);
+  if (!license || license.plan !== 'free' || !license.expires_at) {
+    return {
+      trialStarted: 0,
+      trialEndsAt: 0,
+      daysRemaining: 0,
+      isExpired: true,
+    };
+  }
+
+  const now = Date.now();
+  const daysRemaining = Math.max(0, Math.ceil((license.expires_at - now) / (24 * 60 * 60 * 1000)));
+  const isExpired = now > license.expires_at;
 
   return {
-    month: currentMonth,
-    commits,
-    limit,
-    remaining,
+    trialStarted: license.activated_at,
+    trialEndsAt: license.expires_at,
+    daysRemaining,
+    isExpired,
   };
 }
 
@@ -210,8 +230,11 @@ export function getLicenseInfo(): string {
   }
 
   if (license.plan === 'free') {
-    const usage = getCurrentMonthUsage();
-    return `Free (${usage.remaining}/${usage.limit} commits remaining this month)`;
+    const usage = getTrialStatus();
+    if (usage.isExpired) {
+      return 'Trial expired';
+    }
+    return `Trial (${usage.daysRemaining} day${usage.daysRemaining === 1 ? '' : 's'} remaining)`;
   }
 
   const planName = license.plan === 'pro_monthly' ? 'Pro Monthly' : 'Pro Yearly';

@@ -2,14 +2,19 @@
 
 **Terminal AI + Progress Tracking for Developers**
 
-Make your terminal effortless. See your progress beautifully.
+Never write commit messages again. See your coding journey.
 
 ## What is BuilderOS?
 
 BuilderOS is a CLI tool that:
-1. **Smart Terminal Autocomplete** - Type naturally, get perfect commands
-2. **AI Git Commits** - `builderos commit` generates professional commit messages  
-3. **Progress Tracking** - Beautiful analytics of your coding journey
+1. **AI Git Commits** - Professional commit messages in seconds
+2. **Progress Tracking** - Beautiful analytics of your coding journey
+3. **Universal** - Works everywhere (any IDE, any terminal, any OS)
+
+## Pricing
+
+- **7-Day Trial:** Unlimited commits, all features, no credit card
+- **Pro:** $9.99/month or $100/year after trial
 
 ## Tech Stack
 
