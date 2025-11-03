@@ -4,14 +4,14 @@ import { setupCommand } from './setup';
 
 export async function onboardCommand() {
   console.clear();
-  console.log(chalk.blue.bold('\n🚀 Welcome to BuilderOS!\n'));
+  console.log(chalk.blue.bold('\n🚀 Welcome to SnapCommit!\n'));
   console.log(chalk.white('The AI that makes you look like a senior developer.\n'));
   
   await sleep(500);
   
-  // Step 1: What is BuilderOS?
-  console.log(chalk.cyan.bold('What is BuilderOS?\n'));
-  console.log(chalk.gray('BuilderOS uses AI to:'));
+  // Step 1: What is SnapCommit?
+  console.log(chalk.cyan.bold('What is SnapCommit?\n'));
+  console.log(chalk.gray('SnapCommit uses AI to:'));
   console.log(chalk.white('  • Generate perfect commit messages'));
   console.log(chalk.white('  • Track your coding progress'));
   console.log(chalk.white('  • Make git effortless'));
@@ -34,11 +34,11 @@ export async function onboardCommand() {
   
   // Step 3: Setup
   console.clear();
-  console.log(chalk.blue.bold('\n⚙️  Let\'s set up BuilderOS\n'));
+  console.log(chalk.blue.bold('\n⚙️  Let\'s set up SnapCommit\n'));
   console.log(chalk.white('We\'ll add some aliases to your shell:\n'));
   console.log(chalk.cyan('  bos  ') + chalk.gray('→ builderos'));
-  console.log(chalk.cyan('  bq   ') + chalk.gray('→ builderos quick (instant commit)'));
-  console.log(chalk.cyan('  bs   ') + chalk.gray('→ builderos stats'));
+  console.log(chalk.cyan('  bq   ') + chalk.gray('→ snapcommit quick (instant commit)'));
+  console.log(chalk.cyan('  bs   ') + chalk.gray('→ snapcommit stats'));
   console.log();
   
   const setupNow = await askYesNo('Run setup now?');
@@ -47,7 +47,7 @@ export async function onboardCommand() {
   if (setupNow) {
     setupCommand();
   } else {
-    console.log(chalk.gray('  Skipped. Run') + chalk.cyan(' builderos setup') + chalk.gray(' anytime.'));
+    console.log(chalk.gray('  Skipped. Run') + chalk.cyan(' snapcommit setup') + chalk.gray(' anytime.'));
     console.log();
   }
   
@@ -79,13 +79,13 @@ export async function onboardCommand() {
   console.log(chalk.cyan('  3. ') + chalk.white('Run: ') + chalk.green.bold('bq'));
   console.log();
   console.log(chalk.gray('Other commands:'));
-  console.log(chalk.cyan('  builderos doctor  ') + chalk.gray('→ Check setup'));
-  console.log(chalk.cyan('  builderos stats   ') + chalk.gray('→ See your progress'));
-  console.log(chalk.cyan('  builderos --help  ') + chalk.gray('→ All commands'));
+  console.log(chalk.cyan('  snapcommit doctor  ') + chalk.gray('→ Check setup'));
+  console.log(chalk.cyan('  snapcommit stats   ') + chalk.gray('→ See your progress'));
+  console.log(chalk.cyan('  snapcommit --help  ') + chalk.gray('→ All commands'));
   console.log();
   console.log(chalk.yellow.bold('💡 Pro tip: ') + chalk.white('Use') + chalk.cyan(' bq ') + chalk.white('for instant commits!'));
   console.log();
-  console.log(chalk.gray('Need help? → ') + chalk.cyan('https://builderos.dev/docs'));
+  console.log(chalk.gray('Need help? → ') + chalk.cyan('https://snapcommit.dev/docs'));
   console.log();
 }
 

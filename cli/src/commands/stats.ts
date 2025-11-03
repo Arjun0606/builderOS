@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { getStats } from '../db/database';
 
 export function statsCommand() {
-  console.log(chalk.blue.bold('\n📊 Your BuilderOS Stats\n'));
+  console.log(chalk.blue.bold('\n📊 Your SnapCommit Stats\n'));
 
   const stats7d = getStats(7);
   const stats30d = getStats(30);
@@ -47,7 +47,7 @@ export function statsCommand() {
     });
     console.log();
   } else {
-    console.log(chalk.gray('No commits yet. Run') + chalk.cyan(' builderos commit') + chalk.gray(' to get started!'));
+    console.log(chalk.gray('No commits yet. Run') + chalk.cyan(' snapcommit commit') + chalk.gray(' to get started!'));
     console.log();
   }
 
@@ -67,7 +67,7 @@ export function statsCommand() {
     console.log();
   }
 
-  console.log(chalk.gray('💡 Keep building with BuilderOS!'));
+  console.log(chalk.gray('💡 Keep building with SnapCommit!'));
   console.log();
 }
 

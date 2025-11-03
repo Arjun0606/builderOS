@@ -3,8 +3,8 @@ import path from 'path';
 import fs from 'fs';
 import os from 'os';
 
-const DB_DIR = path.join(os.homedir(), '.builderos');
-const DB_PATH = path.join(DB_DIR, 'builderos.db');
+const DB_DIR = path.join(os.homedir(), '.snapcommit');
+const DB_PATH = path.join(DB_DIR, 'snapcommit.db');
 
 // Ensure directory exists
 if (!fs.existsSync(DB_DIR)) {

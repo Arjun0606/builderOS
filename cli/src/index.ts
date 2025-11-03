@@ -29,8 +29,8 @@ checkForUpdates().then((result) => {
 });
 
 program
-  .name('builderos')
-  .description('Terminal AI + Progress Tracking for Developers')
+  .name('snapcommit')
+  .description('Snap. Commit. Track. - Instant AI commits with beautiful stats')
   .version('1.0.0');
 
 // Command: devflow commit
@@ -68,16 +68,16 @@ program
     setupCommand();
   });
 
-// Command: builderos doctor
+// Command: snapcommit doctor
 program
   .command('doctor')
   .alias('check')
-  .description('Check if BuilderOS is set up correctly')
+  .description('Check if SnapCommit is set up correctly')
   .action(() => {
     doctorCommand();
   });
 
-// Command: builderos activate
+// Command: snapcommit activate
 program
   .command('activate [license-key]')
   .description('Activate your Pro license')
@@ -85,7 +85,7 @@ program
     await activateCommand(licenseKey);
   });
 
-// Command: builderos status
+// Command: snapcommit status
 program
   .command('status')
   .description('Check your license status')
@@ -93,7 +93,7 @@ program
     statusCommand();
   });
 
-// Command: builderos onboard
+// Command: snapcommit onboard
 program
   .command('onboard')
   .alias('welcome')
@@ -104,16 +104,16 @@ program
 
 // Default action
 program.action(() => {
-  console.log(chalk.blue.bold('\n✨ BuilderOS - Terminal AI for Developers\n'));
+  console.log(chalk.blue.bold('\n⚡ SnapCommit - Snap. Commit. Track.\n'));
   console.log(chalk.white('Commands:'));
-  console.log(chalk.gray('  builderos commit  →  AI commit (interactive)'));
-  console.log(chalk.gray('  builderos quick   →  Quick commit (auto stage + commit)'));
-  console.log(chalk.gray('  builderos stats   →  See your progress'));
-  console.log(chalk.gray('  builderos setup   →  Install shell integration'));
+  console.log(chalk.gray('  snapcommit commit  →  AI commit (interactive)'));
+  console.log(chalk.gray('  snapcommit quick   →  Quick commit (alias: snap)'));
+  console.log(chalk.gray('  snapcommit stats   →  See your progress'));
+  console.log(chalk.gray('  snapcommit setup   →  Install shell integration'));
   console.log();
   console.log(chalk.yellow('Quick Start:'));
-  console.log(chalk.cyan('  builderos setup') + chalk.gray('   # Install shell integration'));
-  console.log(chalk.cyan('  builderos quick') + chalk.gray('   # Make your first commit'));
+  console.log(chalk.cyan('  snapcommit setup') + chalk.gray('  # Install shell integration'));
+  console.log(chalk.cyan('  snap') + chalk.gray('                # Make your first commit!'));
   console.log();
 });
 

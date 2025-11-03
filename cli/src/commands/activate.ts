@@ -3,7 +3,7 @@ import { activateLicense, getCurrentLicense, getLicenseInfo } from '../license/m
 import readline from 'readline';
 
 export async function activateCommand(licenseKey?: string) {
-  console.log(chalk.blue.bold('\n🔐 BuilderOS License Activation\n'));
+  console.log(chalk.blue.bold('\n🔐 SnapCommit License Activation\n'));
 
   // If no key provided, prompt for it
   if (!licenseKey) {
@@ -53,7 +53,7 @@ export async function activateCommand(licenseKey?: string) {
     
     console.log();
     console.log(chalk.green('🎉 You now have unlimited AI commits!'));
-    console.log(chalk.gray('   Try: ') + chalk.cyan('builderos quick'));
+    console.log(chalk.gray('   Try: ') + chalk.cyan('snapcommit quick'));
     console.log();
   } catch (error: any) {
     console.log(chalk.red('\n❌ Failed to activate license'));
@@ -63,7 +63,7 @@ export async function activateCommand(licenseKey?: string) {
 }
 
 export function statusCommand() {
-  console.log(chalk.blue.bold('\n📊 BuilderOS License Status\n'));
+  console.log(chalk.blue.bold('\n📊 SnapCommit License Status\n'));
 
   const license = getCurrentLicense();
 
@@ -76,7 +76,7 @@ export function statusCommand() {
     console.log(chalk.gray('   • Advanced stats'));
     console.log(chalk.gray('   • Priority support'));
     console.log();
-    console.log(chalk.white('Visit: ') + chalk.cyan('https://builderos.dev/pricing'));
+    console.log(chalk.white('Visit: ') + chalk.cyan('https://snapcommit.dev/pricing'));
     console.log();
     return;
   }
@@ -91,10 +91,10 @@ export function statusCommand() {
     const usage = require('../license/manager').getTrialStatus();
     if (usage.isExpired) {
       console.log(chalk.red('❌ Your trial has expired!'));
-      console.log(chalk.white('Upgrade: ') + chalk.cyan('https://builderos.dev/pricing'));
+      console.log(chalk.white('Upgrade: ') + chalk.cyan('https://snapcommit.dev/pricing'));
     } else {
       console.log(chalk.yellow(`💡 ${usage.daysRemaining} day${usage.daysRemaining === 1 ? '' : 's'} left in your trial!`));
-      console.log(chalk.white('Upgrade: ') + chalk.cyan('https://builderos.dev/pricing'));
+      console.log(chalk.white('Upgrade: ') + chalk.cyan('https://snapcommit.dev/pricing'));
     }
   } else {
     console.log(chalk.green('✅ You have Pro access!'));

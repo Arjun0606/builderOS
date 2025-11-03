@@ -4,7 +4,7 @@ import os from 'os';
 import path from 'path';
 
 export function setupCommand() {
-  console.log(chalk.blue.bold('\n⚙️  BuilderOS Setup\n'));
+  console.log(chalk.blue.bold('\n⚙️  SnapCommit Setup\n'));
 
   const shell = process.env.SHELL || '';
   const homeDir = os.homedir();
@@ -26,9 +26,9 @@ export function setupCommand() {
     console.log(chalk.gray('   Supports: zsh, bash, fish (Mac/Linux), PowerShell (Windows)'));
     console.log(chalk.gray(`   Your shell: ${shell || 'unknown'}`));
     console.log();
-    console.log(chalk.white('💡 You can still use BuilderOS:'));
-    console.log(chalk.cyan('   builderos quick') + chalk.gray(' - Quick commit'));
-    console.log(chalk.cyan('   builderos stats') + chalk.gray(' - See stats'));
+    console.log(chalk.white('💡 You can still use SnapCommit:'));
+    console.log(chalk.cyan('   snapcommit quick') + chalk.gray(' - Quick commit'));
+    console.log(chalk.cyan('   snapcommit stats') + chalk.gray(' - See stats'));
     console.log();
   }
 }
@@ -37,10 +37,10 @@ function setupZsh(homeDir: string) {
   const zshrcPath = path.join(homeDir, '.zshrc');
   
   const integration = `
-# BuilderOS Integration
+# SnapCommit Integration
 alias bos="builderos"
-alias bq="builderos quick"
-alias bs="builderos stats"
+alias bq="snapcommit quick"
+alias bs="snapcommit stats"
 `;
 
   if (!fs.existsSync(zshrcPath)) {
@@ -48,19 +48,19 @@ alias bs="builderos stats"
     fs.writeFileSync(zshrcPath, integration);
   } else {
     const content = fs.readFileSync(zshrcPath, 'utf-8');
-    if (content.includes('BuilderOS Integration')) {
-      console.log(chalk.green('✅ BuilderOS already set up in .zshrc'));
+    if (content.includes('SnapCommit Integration')) {
+      console.log(chalk.green('✅ SnapCommit already set up in .zshrc'));
       return;
     }
     fs.appendFileSync(zshrcPath, integration);
   }
 
-  console.log(chalk.green('✅ BuilderOS integrated with zsh!'));
+  console.log(chalk.green('✅ SnapCommit integrated with zsh!'));
   console.log();
   console.log(chalk.white.bold('Quick aliases:'));
   console.log(chalk.gray('  bos        →  builderos'));
-  console.log(chalk.gray('  bq         →  builderos quick (instant commit)'));
-  console.log(chalk.gray('  bs         →  builderos stats'));
+  console.log(chalk.gray('  bq         →  snapcommit quick (instant commit)'));
+  console.log(chalk.gray('  bs         →  snapcommit stats'));
   console.log();
   console.log(chalk.yellow('⚡ Run this to activate:'));
   console.log(chalk.cyan('  source ~/.zshrc'));
@@ -73,10 +73,10 @@ function setupBash(homeDir: string) {
   const bashrcPath = path.join(homeDir, '.bashrc');
   
   const integration = `
-# BuilderOS Integration
+# SnapCommit Integration
 alias bos="builderos"
-alias bq="builderos quick"
-alias bs="builderos stats"
+alias bq="snapcommit quick"
+alias bs="snapcommit stats"
 `;
 
   if (!fs.existsSync(bashrcPath)) {
@@ -84,19 +84,19 @@ alias bs="builderos stats"
     fs.writeFileSync(bashrcPath, integration);
   } else {
     const content = fs.readFileSync(bashrcPath, 'utf-8');
-    if (content.includes('BuilderOS Integration')) {
-      console.log(chalk.green('✅ BuilderOS already set up in .bashrc'));
+    if (content.includes('SnapCommit Integration')) {
+      console.log(chalk.green('✅ SnapCommit already set up in .bashrc'));
       return;
     }
     fs.appendFileSync(bashrcPath, integration);
   }
 
-  console.log(chalk.green('✅ BuilderOS integrated with bash!'));
+  console.log(chalk.green('✅ SnapCommit integrated with bash!'));
   console.log();
   console.log(chalk.white.bold('Quick aliases:'));
   console.log(chalk.gray('  bos        →  builderos'));
-  console.log(chalk.gray('  bq         →  builderos quick (instant commit)'));
-  console.log(chalk.gray('  bs         →  builderos stats'));
+  console.log(chalk.gray('  bq         →  snapcommit quick (instant commit)'));
+  console.log(chalk.gray('  bs         →  snapcommit stats'));
   console.log();
   console.log(chalk.yellow('⚡ Run this to activate:'));
   console.log(chalk.cyan('  source ~/.bashrc'));
@@ -110,10 +110,10 @@ function setupFish(homeDir: string) {
   const fishConfigPath = path.join(fishConfigDir, 'config.fish');
   
   const integration = `
-# BuilderOS Integration
+# SnapCommit Integration
 alias bos="builderos"
-alias bq="builderos quick"
-alias bs="builderos stats"
+alias bq="snapcommit quick"
+alias bs="snapcommit stats"
 `;
 
   // Ensure config directory exists
@@ -126,19 +126,19 @@ alias bs="builderos stats"
     fs.writeFileSync(fishConfigPath, integration);
   } else {
     const content = fs.readFileSync(fishConfigPath, 'utf-8');
-    if (content.includes('BuilderOS Integration')) {
-      console.log(chalk.green('✅ BuilderOS already set up in Fish'));
+    if (content.includes('SnapCommit Integration')) {
+      console.log(chalk.green('✅ SnapCommit already set up in Fish'));
       return;
     }
     fs.appendFileSync(fishConfigPath, integration);
   }
 
-  console.log(chalk.green('✅ BuilderOS integrated with Fish!'));
+  console.log(chalk.green('✅ SnapCommit integrated with Fish!'));
   console.log();
   console.log(chalk.white.bold('Quick aliases:'));
   console.log(chalk.gray('  bos        →  builderos'));
-  console.log(chalk.gray('  bq         →  builderos quick (instant commit)'));
-  console.log(chalk.gray('  bs         →  builderos stats'));
+  console.log(chalk.gray('  bq         →  snapcommit quick (instant commit)'));
+  console.log(chalk.gray('  bs         →  snapcommit stats'));
   console.log();
   console.log(chalk.yellow('⚡ Reload config:'));
   console.log(chalk.cyan('  source ~/.config/fish/config.fish'));
@@ -154,8 +154,8 @@ function setupWindows(homeDir: string) {
   console.log(chalk.gray('  Add these aliases to your PowerShell profile:'));
   console.log();
   console.log(chalk.cyan('  Set-Alias bos builderos'));
-  console.log(chalk.cyan('  function bq { builderos quick }'));
-  console.log(chalk.cyan('  function bs { builderos stats }'));
+  console.log(chalk.cyan('  function bq { snapcommit quick }'));
+  console.log(chalk.cyan('  function bs { snapcommit stats }'));
   console.log();
   console.log(chalk.gray('To edit your profile, run:'));
   console.log(chalk.cyan('  notepad $PROFILE'));

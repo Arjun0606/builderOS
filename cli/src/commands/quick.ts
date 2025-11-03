@@ -22,12 +22,12 @@ export async function quickCommand() {
     }
     
     console.log();
-    console.log(chalk.yellow('⭐ Upgrade to Pro to keep using BuilderOS!'));
+    console.log(chalk.yellow('⭐ Upgrade to Pro to keep using SnapCommit!'));
     console.log(chalk.gray('   • $9.99/month or $100/year'));
     console.log(chalk.gray('   • Unlimited AI commits'));
     console.log(chalk.gray('   • Advanced stats & features'));
     console.log();
-    console.log(chalk.white('Visit: ') + chalk.cyan('https://builderos.dev/pricing'));
+    console.log(chalk.white('Visit: ') + chalk.cyan('https://snapcommit.dev/pricing'));
     console.log();
     process.exit(1);
   }
@@ -50,7 +50,7 @@ export async function quickCommand() {
     console.log();
     if (userPlan === 'free') {
       console.log(chalk.yellow('💡 Pro users have 10x higher limits!'));
-      console.log(chalk.white('   Visit: ') + chalk.cyan('https://builderos.dev/pricing'));
+      console.log(chalk.white('   Visit: ') + chalk.cyan('https://snapcommit.dev/pricing'));
     }
     console.log();
     process.exit(1);
@@ -130,7 +130,7 @@ export async function quickCommand() {
     // Show upgrade message for trial users (last 2 days)
     if (!isProUser() && usage && !usage.isExpired && usage.daysRemaining <= 2) {
       console.log(chalk.yellow(`⚠️  Only ${usage.daysRemaining} day${usage.daysRemaining === 1 ? '' : 's'} left in your trial!`));
-      console.log(chalk.gray('   Upgrade to Pro: https://builderos.dev/pricing\n'));
+      console.log(chalk.gray('   Upgrade to Pro: https://snapcommit.dev/pricing\n'));
     }
   } catch (error: any) {
     console.log(chalk.red('❌ Commit failed'));

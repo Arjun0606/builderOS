@@ -8,7 +8,7 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import os from 'os';
 
-const DB_PATH = path.join(os.homedir(), '.builderos', 'builderos.db');
+const DB_PATH = path.join(os.homedir(), '.snapcommit', 'snapcommit.db');
 const db = new Database(DB_PATH);
 
 // Rate limits (per hour)

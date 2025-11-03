@@ -1,11 +1,12 @@
 {
-  "name": "builderos",
+  "name": "snapcommit",
   "version": "1.0.0",
-  "description": "The AI that makes you look like a senior developer. Never write commit messages again.",
+  "description": "Instant AI commits. Beautiful progress tracking. Never write commit messages again.",
   "main": "dist/index.js",
   "bin": {
-    "builderos": "./dist/index.js",
-    "bos": "./dist/index.js"
+    "snapcommit": "./dist/index.js",
+    "snap": "./dist/index.js",
+    "sc": "./dist/index.js"
   },
   "scripts": {
     "dev": "tsx src/index.ts",
@@ -27,15 +28,15 @@
     "automation",
     "progress-tracking"
   ],
-  "author": "BuilderOS Team",
+  "author": "SnapCommit",
   "license": "MIT",
-  "homepage": "https://builderos.dev",
+  "homepage": "https://snapcommit.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Arjun0606/builderOS.git"
+    "url": "https://github.com/Arjun0606/snapcommit.git"
   },
   "bugs": {
-    "url": "https://github.com/Arjun0606/builderOS/issues"
+    "url": "https://github.com/Arjun0606/snapcommit/issues"
   },
   "engines": {
     "node": ">=18.0.0"

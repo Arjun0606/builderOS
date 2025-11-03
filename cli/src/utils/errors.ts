@@ -2,7 +2,7 @@
  * Production-ready error handling
  */
 
-export class BuilderOSError extends Error {
+export class SnapCommitError extends Error {
   constructor(
     message: string,
     public code: string,
@@ -10,11 +10,11 @@ export class BuilderOSError extends Error {
     public helpUrl?: string
   ) {
     super(message);
-    this.name = 'BuilderOSError';
+    this.name = 'SnapCommitError';
   }
 }
 
-export class APIError extends BuilderOSError {
+export class APIError extends SnapCommitError {
   constructor(
     message: string,
     public provider: 'anthropic' | 'google',
@@ -29,7 +29,7 @@ export class APIError extends BuilderOSError {
   }
 }
 
-export class LicenseError extends BuilderOSError {
+export class LicenseError extends SnapCommitError {
   constructor(message: string, userMessage?: string) {
     super(
       message,
@@ -40,7 +40,7 @@ export class LicenseError extends BuilderOSError {
   }
 }
 
-export class GitError extends BuilderOSError {
+export class GitError extends SnapCommitError {
   constructor(message: string, userMessage?: string) {
     super(
       message,
@@ -52,7 +52,7 @@ export class GitError extends BuilderOSError {
 }
 
 export function handleError(error: unknown): never {
-  if (error instanceof BuilderOSError) {
+  if (error instanceof SnapCommitError) {
     console.error(`\n❌ ${error.userMessage}`);
     if (error.helpUrl) {
       console.error(`   Help: ${error.helpUrl}`);

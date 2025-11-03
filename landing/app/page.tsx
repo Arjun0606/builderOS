@@ -13,7 +13,7 @@ export default function Home() {
           
           {/* Install Command */}
           <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
-            <code className="text-blue-300 text-lg">npm install -g builderos</code>
+            <code className="text-blue-300 text-lg">npm install -g snapcommit</code>
           </div>
 
           {/* CTA Buttons */}
@@ -119,8 +119,8 @@ Free tier: 9 commits remaining this month`}
           <p>Made with ❤️ for developers who want to focus on building, not git messages.</p>
           <div className="flex gap-6 justify-center mt-4">
             <a href="https://github.com/Arjun0606/builderOS" className="hover:text-blue-400">GitHub</a>
-            <a href="https://twitter.com/builderos" className="hover:text-blue-400">Twitter</a>
-            <a href="mailto:support@builderos.dev" className="hover:text-blue-400">Support</a>
+            <a href="https://twitter.com/snapcommit" className="hover:text-blue-400">Twitter</a>
+            <a href="mailto:support@snapcommit.dev" className="hover:text-blue-400">Support</a>
           </div>
         </div>
       </div>

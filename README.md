@@ -1,15 +1,15 @@
-# BuilderOS
+# SnapCommit
 
-**Terminal AI + Progress Tracking for Developers**
+**Snap. Commit. Track.**
 
-Never write commit messages again. See your coding journey.
+Instant AI commits. Beautiful progress tracking. Never write commit messages again.
 
-## What is BuilderOS?
+## What is SnapCommit?
 
-BuilderOS is a CLI tool that:
-1. **AI Git Commits** - Professional commit messages in seconds
-2. **Progress Tracking** - Beautiful analytics of your coding journey
-3. **Universal** - Works everywhere (any IDE, any terminal, any OS)
+SnapCommit is a CLI tool that:
+1. **⚡ Instant AI Commits** - Professional messages in one command (`snap`)
+2. **📊 Beautiful Stats** - Track your coding journey with gorgeous analytics
+3. **🌍 Universal** - Works everywhere (any IDE, any terminal, any OS)
 
 ## Pricing
 
@@ -18,24 +18,27 @@ BuilderOS is a CLI tool that:
 
 ## Tech Stack
 
-- **CLI**: Rust (fast, cross-platform)
-- **AI**: Claude 4.5 Sonnet (commits) + Gemini 2.5 Flash (autocomplete)
-- **Dashboard**: Next.js + TypeScript
-- **Database**: SQLite (local-first)
+- **CLI**: Node.js + TypeScript (fast, universal)
+- **AI**: Claude 4.5 Sonnet (best commit messages)
+- **Landing**: Next.js + TypeScript + Tailwind
+- **Database**: SQLite (local-first, privacy-focused)
 
-## Project Structure
+## Quick Start
 
-```
-BuilderOS/
-├── cli/              # TypeScript CLI tool
-├── dashboard/        # Next.js web dashboard  
-├── docs/            # Documentation
-└── .env             # API keys
+```bash
+# Install globally
+npm install -g snapcommit
+
+# Set up (adds aliases)
+snapcommit setup
+
+# Make your first commit
+snap  # That's it!
 ```
 
 ## Status
 
-🚧 **Week 1: Building terminal autocomplete core**
+✅ **PRODUCTION READY - Launch Week!**
 
 ## Goal
 

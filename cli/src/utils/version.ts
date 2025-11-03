@@ -7,7 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
-const CACHE_FILE = path.join(os.homedir(), '.builderos', 'version-cache.json');
+const CACHE_FILE = path.join(os.homedir(), '.snapcommit', 'version-cache.json');
 const CHECK_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
 
 interface VersionCache {
@@ -63,7 +63,7 @@ export async function checkForUpdates(): Promise<{
 
 function fetchLatestVersion(): Promise<string> {
   return new Promise((resolve, reject) => {
-    https.get('https://registry.npmjs.org/builderos/latest', (res) => {
+    https.get('https://registry.npmjs.org/snapcommit/latest', (res) => {
       let data = '';
       
       res.on('data', (chunk) => {
